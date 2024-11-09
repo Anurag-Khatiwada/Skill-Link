@@ -1,0 +1,149 @@
+.profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212; /* Dark background */
+  color: #ffffff; /* Light text color */
+  font-family: 'Arial', sans-serif;
+}
+
+.profile-container {
+  background-color: #1e1e1e; /* Slightly lighter background for the profile container */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-width: 800px; /* Set a maximum width for the profile */
+  width: 100%; /* Full width */
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 150px; /* Larger profile image */
+  height: 150px; /* Maintain aspect ratio */
+  border-radius: 50%; /* Circular profile image */
+  margin-right: 20px;
+  border: 4px solid #ff9800; /* Border around image */
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-size: 2rem; /* Increase username font size */
+  margin: 0;
+}
+
+.country {
+  font-size: 1.2rem; /* Slightly larger font size for country */
+  color: #ff9800; /* Use a contrasting color */
+  margin: 5px 0;
+}
+
+.contact-info {
+  margin: 5px 0;
+  font-size: 1.1rem; /* Slightly larger font size */
+}
+
+.profile-details {
+  margin-top: 20px;
+}
+
+.profile-details h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem; /* Larger heading for About Me */
+}
+
+.skills-section, .certificates-section, .cv-section {
+  margin-top: 20px;
+}
+
+.skills-section h3,
+.certificates-section h3,
+.cv-section h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem; /* Heading size for Skills, Certificates, CV */
+}
+
+.skills-section ul, .certificates-section ul {
+  list-style-type: disc;
+  padding-left: 20px; /* Indentation for list items */
+}
+
+.edit-profile-btn {
+  background-color: #ff9800; /* Button background color */
+  color: #ffffff; /* Button text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem; /* Increase button font size */
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.edit-profile-btn:hover {
+  background-color: #e68a00; /* Darken on hover */
+}
+
+.cv-link {
+  color: #ff9800; /* Color for the CV link */
+  text-decoration: none; /* Remove underline */
+}
+.certificationdisplay{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.cvImg{
+  width: 150px;
+  height:150px;
+  object-fit: contain;
+}
+.certificateImg{
+  width: 150px;
+  height:150px;
+  object-fit: contain;
+}
+.certificateItem{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid aqua;
+  padding: 10px;
+}
+.certificateItem button{
+  background-color: #007bff; /* Button background */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  padding: 10px 15px; /* Button padding */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+}
+.cvItem{
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  gap:10px;
+  flex-direction: column;
+  border: 1px solid aqua;
+  padding: 10px;
+  width: 10rem;
+}
+.cvItem button{
+  background-color: #007bff; /* Button background */
+  width:5rem;
+  align-items: center;
+  margin-left: 30px;
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  padding: 10px 15px; /* Button padding */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+}

@@ -1,0 +1,149 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+} */
+.register{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height:125vh;
+    background-color: #101010;
+    margin: 1rem auto;
+    border: 1px solid lightblue;
+    border-radius: 1rem;
+}
+.register form{
+    width: 100%;
+    padding: 3rem 0;
+    display: flex;
+    gap: 5rem;
+}
+.register form h1{
+    color: green;
+    margin-bottom: 1rem; 
+}
+
+.register form .left, 
+.register form .right{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    justify-content: space-between;
+}
+
+.register form .left label, 
+.register form .right label{
+    color: white;
+    font-size: 1.3rem;
+}
+.register form .left input, textarea , 
+.register form .right input, textarea{
+    padding: 1rem;
+    border: 1px solid lightblue;
+    outline: none;
+    background-color: transparent;
+    color: white;
+}
+
+.register form .left .submit{
+    border: 1px solid lightblue;
+    border-radius: 8px 15px;
+    width:12rem;
+    margin: auto;
+    outline: none;
+    background-color: red;
+    color: white;
+    padding: 1rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    cursor: pointer;
+
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .toggle .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+  
+  .toggle .switch input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Ensure it is clickable */
+    cursor: pointer;
+  }
+  
+  .toggle .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+    z-index: 1; /* Layer the slider below the checkbox */
+  }
+  
+  .toggle .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  .toggle input:checked + .slider {
+    background-color: #2196f3;
+  }
+  
+  .toggle input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
+  }
+  
+  .toggle input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  .register form .left  .inputpass{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.register form .left  .inputpass input{
+    width: 80%;
+}
+
+.register form .left .inputpass .eyeopen{
+    color:white;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    border: none;
+    background-color:transparent;
+    border-radius: 30%;
+}
+.register form .left .eyeopen img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: invert(1)
+}

@@ -1,0 +1,122 @@
+.navbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #101010;
+    transition: 0.5 all ease;
+    position: sticky;
+    top: 0;
+    padding: 10px;
+   z-index: 10;
+}
+.navbar.active{
+    background-color: black;
+    color:white;
+}
+.container{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 90%;
+    margin:auto;
+    color:white;
+    border-radius: 20px;
+    Padding:20px;
+    padding: absolute;
+
+}
+.container.active{
+    background-color: black;
+    color:white;
+}
+
+.logo{
+    color:ghostwhite;
+    font-size: 30px;
+
+}
+.links{
+    display: flex;
+    align-items: center;
+    gap:60px;
+    font-size: 20px;
+    
+}
+.links span{
+    cursor: pointer;
+}
+
+
+.join{
+    padding: 10px 20px;
+    color:white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 12px;
+    cursor: pointer
+    
+}
+.join:hover{
+    background-color: #484545;
+    border-color: #484545;
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
+.links span:hover{
+    transform: scale(1.08);
+    transition: all 0.1s ease-in;
+}
+ 
+hr{
+    opacity: 0.5;
+    width:100%
+}
+.menu{
+    color: white;
+    width: 95%;
+    display:flex;
+    justify-content: space-evenly;
+    padding:10px 0px;
+    font-weight: 300;
+    top:85px;
+    
+}
+.user{
+    display: flex;
+    align-items:center;
+    gap:10px;
+    cursor: pointer;
+    position: relative;
+
+}
+.user img{
+    width:40px;
+    height:40px;
+    border: 1px solid red;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: white;
+    
+}
+.options{
+    position: absolute;
+    top:50px;
+    right:-60px;
+    background-color:#484545;
+    padding:20px;
+    border:1px solid black;
+    border-radius: 12px;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:10px;
+    width: 170px;
+    font: 300;
+    align-items: center;
+
+    
+}
+.options span{
+    cursor: pointer;
+}

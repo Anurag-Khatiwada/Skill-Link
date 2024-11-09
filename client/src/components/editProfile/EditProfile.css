@@ -1,0 +1,93 @@
+/* EditProfile.css */
+.edit-profile {
+
+    background-color: #2a2a2a; /* Dark background */
+    color: #f5f5f5; /* Light text color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px; /* Limit width */
+    margin: auto; /* Center align */
+  }
+.editContainer{
+  margin-top:15px;
+  margin-bottom: 15px;
+}
+  .edit-profile h3 {
+    margin-top: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e6e6e6; /* Slightly lighter heading */
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold; /* Make labels bold */
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 90%;
+    padding: 10px; /* Increased padding for better UX */
+    border: 1px solid #444; /* Darker border */
+    border-radius: 4px;
+    background-color: #3a3a3a; /* Darker input background */
+    color: #f5f5f5; /* Light text for inputs */
+    transition: border-color 0.3s; /* Smooth transition on focus */
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between; /* Space between buttons */
+    margin-top: 20px; /* Add margin to the top */
+  }
+  
+  .button-group button {
+    background-color: #007bff; /* Button background */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Button padding */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+  }
+  
+  .button-group button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  .button-group button:last-child {
+    background-color: #dc3545; /* Red for cancel button */
+  }
+  
+  .button-group button:last-child:hover {
+    background-color: #c82333; /* Darker red on hover */
+  }
+  .imageAdd{
+    background-color: red;
+    color: white;
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+    padding: 1rem 1rem;
+    border-radius: 8px 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-left: 10px;  
+  }
+  .certificate-cv{
+    border:1px solid aqua;
+    padding:5px;
+  }

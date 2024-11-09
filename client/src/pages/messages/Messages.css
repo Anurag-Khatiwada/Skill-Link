@@ -1,0 +1,79 @@
+.messages{
+    display: flex;
+    justify-content: center;
+}
+.messages .messagescontainer{
+    width:95vw;
+    padding: 50px 0;
+}
+.messages .messagescontainer .title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    border-radius: 20px;
+
+}
+
+.messages .messagescontainer table{
+    width: 80%;
+    margin:20px 90px;
+    border-collapse: separate;
+    border-spacing: 0 1.5rem;
+    
+   
+}
+
+
+ 
+.messages .messagescontainer table td{
+    padding: 8px;
+    text-align: center;
+} 
+
+
+.messagescontainer table thead tr{
+    height: 100px;
+    background-color: transparent;
+}
+.messagescontainer table tbody tr{
+    height: 100px;
+}   
+
+
+
+
+
+.messagescontainer table tr td:first-child{
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+
+}
+.messagescontainer table tr td:last-child{
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+
+}
+.mar{
+    background-color: red;
+    color: white;
+    font-weight: 500;
+    border:1px solid lightblue;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px 18px;
+}
+.active{
+    background-color: rgb(87, 91, 91);
+}
+.nonactive{
+    background-color: transparent;
+}
+
+
+/* tr:nth-child(even){
+    background-color: rgb(141, 216, 240);
+}
+tr:nth-child(odd){
+    background-color: rgb(95, 215, 175);
+} */

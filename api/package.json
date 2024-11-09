@@ -1,0 +1,21 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cookieparser": "^0.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7",
+    "stripe": "^17.1.0"
+  }
+}

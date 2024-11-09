@@ -1,0 +1,145 @@
+div{
+    color:white;
+}
+.add{
+    display: flex;
+    justify-content: center;
+}
+.addContainer{
+    background-color: #101010;
+    width:95vw;
+    padding:3rem 0px;
+}
+.addContainer h1{
+    color: white;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
+.addContainer .sections{
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+}
+.addContainer .sections .left,.right{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:1.5rem;
+}
+.addContainer .section .right{
+    gap:2rem;
+}
+ .section .left label, .sections .right label {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.addContainer .sections .left input,
+
+.addContainer .sections .left textarea,
+.addContainer .sections .right input,
+
+.addContainer .sections .right textarea{
+    padding: 1.3rem;
+    background-color: transparent;
+    border: 1px solid aqua;
+    border-radius: 10px;
+    outline: none;
+    color:white
+}
+.addContainer .sections .left select,
+.addContainer .sections .right select{
+    padding: 1.3rem;
+    background-color: rgb(19, 18, 18);
+    border: 1px solid aqua;
+    border-radius: 10px;
+    outline: none;
+    color:white
+}
+.addContainer .sections .right textarea {
+    width: 100%;
+    height: auto;
+    resize: vertical;
+    min-height:6rem; 
+}
+.sections .left button{
+    background-color: red;
+    color: white;
+    padding: 1rem 1rem;
+    border-radius: 8px 20px;
+    cursor: pointer;
+}
+
+.sections .right form .add{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.sections .right form input{
+    width: 90%;
+    height: 50px;
+}
+.sections .right .add button{
+    background-color: red;
+    color: white;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    padding: 1rem 1rem;
+    border-radius: 8px 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-left: 10px; 
+}
+
+.imagesinput{
+    display: flex;
+    gap: 50px;
+    border: 1px solid aqua;
+    padding: 1rem 1rem;
+    align-items: center;
+}
+
+.imagesinput .inputImages{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+.imagesinput .imageAdd{
+    background-color: red;
+    color: white;
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    padding: 1rem 1rem;
+    border-radius: 8px 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-left: 10px;  
+}
+
+.addedFeatures{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.addedFeatures button{
+    background-color: transparent;
+    color: white;
+    width: 120px;
+    height: 90px;
+    font-size: 16px;
+    padding: 1rem 1rem;
+    border: 2px solid red;
+    border-radius: 8px 20px;
+    cursor: pointer;
+    outline: none;
+    margin-left: 10px;  
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

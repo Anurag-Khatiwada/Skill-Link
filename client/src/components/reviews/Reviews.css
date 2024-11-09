@@ -1,0 +1,48 @@
+.reviews{
+    margin-top: 50px;
+}
+.reviews{
+    background-color: #101010;
+    padding: 20px 30px;
+    border-radius: 20px ;
+}
+.add{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.add .addForm{
+    display: flex;
+    gap: 20px;
+}
+.add .addForm input{
+    padding: 20px;
+    width: 60%;
+    border: 2px solid aqua;
+    border-radius: 10px;;
+}
+.add .addForm .select{
+    width: 200px;
+    padding: 20px;
+    align-self: flex-end;
+    color: white;
+    background-color: transparent;
+    border: 2px solid aqua;
+    border-radius: 10px;;
+}
+.add .addForm .select option{
+    color:black;
+    border: 2px solid aqua;
+
+}
+.add .addForm button{
+    background-color:red;
+    color:white;
+    border:1px solid white;
+    border-radius: 8px 15px;
+    padding:12px;
+    font-size: 22px;
+    cursor: pointer;
+    align-self: flex-end;
+}

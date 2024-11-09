@@ -1,0 +1,76 @@
+.myGigs{
+    display: flex;
+    justify-content: center;
+}
+.myGigs .myGigscontainer{
+    width:95vw;
+    padding: 50px 0;
+}
+.myGigs .myGigscontainer .title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 20px 20px;
+    border-radius: 20px;
+
+}
+.myGigscontainer .title button{
+    background-color: red;
+    color: white;
+    font-weight: 500;
+    border:1px solid lightblue;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px 18px;
+
+}
+.myGigs .myGigscontainer table{
+    width: 80%;
+    border-collapse: collapse;
+    margin:20px 90px;
+    
+}
+
+
+
+/* .myGigs .myGigscontainer table th,td{
+    border: 1px solid lightblue;
+    padding: 8px;
+    text-align: center;
+} */
+.myGigs .myGigscontainer table,
+.myGigs .myGigscontainer table th,
+.myGigs .myGigscontainer table td {
+    border: 1px solid lightblue;
+    text-align: center;
+}
+.myGigs .myGigscontainer table th{
+    background-color: #333;
+}
+
+
+.myGigscontainer table tr{
+    height: 50px;
+}
+
+.myGigscontainer table tr td img{
+    width: 50px;
+    height: 25px;
+    object-fit: cover;
+}
+.deleteimg{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    fill:red;
+}
+.deleteimg :hover{
+    transform: scale(1.03)
+}
+/* tr:nth-child(even){
+    background-color: rgb(141, 216, 240);
+}
+tr:nth-child(odd){
+    background-color: rgb(95, 215, 175);
+} */

@@ -1,0 +1,106 @@
+.messsage{
+    display: flex;
+    justify-content: center;
+    
+}
+.messageContainer{
+    width: 80vw;
+    height: 75vh;
+    margin:auto;
+    /* background-color: #101010; */
+    margin-top: 2rem;
+    padding: 5px;
+    border-radius: 1.2rem;
+    overflow-y: scroll;
+
+}
+.messageContainer .breadcrumbs{
+    font-weight: 300;
+    font-size: 0.7rem;
+    color : white;
+    margin-left: 1.4rem;
+    margin-top: rem;
+}
+.messageContainer .messages{
+    margin:1.8rem 0px;
+    padding:3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap:1.4rem;
+}
+.messageContainer .messages .item{
+    display: flex;
+    gap:1.4rem;
+    max-width: 60%;
+    font-size: 1rem;
+}
+.messageContainer .messages .item.mySelf{
+    flex-direction: row-reverse;
+    align-self: flex-end;
+}
+.messages .item.mySelf p{
+    border-radius:1rem 0 1rem 1rem;
+    background-color: royalblue;
+    color: white;
+
+}
+.messageContainer .messages .item img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.messages .item p{
+    padding: 1.4rem;
+    background-color: #333;
+    border-radius: 0 1rem 1rem 1rem;
+    color:white;
+}
+hr{
+    height: 0;
+    border:0.5px solid lightblue;
+    margin-bottom: 1rem;
+    width:99%;
+}
+.messageContainer .write{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    gap:0.8rem;
+}
+.messageContainer .write textarea{
+    width: 80%;
+    height: 3rem;
+    padding:10px;
+    border: 1px solid lightblue;
+    color: white;
+    background-color: #333;
+    outline: none;
+    position: sticky;
+    bottom:2px;
+}
+.messageContainer .write button{
+    background-color: red;
+    color:white;
+    padding:1.4rem;
+    border-radius: 8px 20px;
+}
+
+@media screen and (max-width:1000px) {
+    .messageContainer{
+        width: 90vw;
+        height: 75vh;
+        margin:auto;
+        margin-top: 2rem;
+        padding: 5px;
+        border-radius: 1.2rem;
+        overflow-y: scroll;
+    
+    }
+    .messageContainer .messages .item{
+        display: flex;
+        gap:1.4rem;
+        max-width: 65%;
+        font-size: 1rem;
+    }
+}

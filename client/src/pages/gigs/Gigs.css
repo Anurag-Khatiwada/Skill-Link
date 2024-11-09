@@ -1,0 +1,119 @@
+.gigs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+.gigs .gigsContainer{
+    width:90vw;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #101010;
+    gap:15px;
+    border-radius: 20px;
+    margin:5px 40px; 
+}
+.gigs .cards{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:40px;
+    margin:20px;
+}
+.gigs .gigsContainer .breadcrumbs{
+    font-weight: 300;
+    font-size: 0.7rem;
+}
+.gigs .gigsContainer p{
+    color:rgb(181, 180, 180);
+}
+
+.gigs .gigsContainer .menue{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.menueLeft{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 300;
+    color: rgb(181, 180, 180);
+}
+.menueLeft input{
+    padding: 5px;
+    border: 1px solid rgb(158, 211, 229);
+    background-color: transparent;
+    color:white;
+    border-radius: 5px;
+}
+.menueLeft input::placeholder {
+    color: azure;
+}
+.menueLeft button{
+    background-color: red;
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 5px 10px;
+}
+.menueLeft button:hover{
+    transform: scale(1.1);
+}
+.menueRight{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+.menueRight .sortType{
+    font-weight: 500;
+}
+.menueRight img{
+    width: 15px;
+    cursor:pointer;
+    filter:invert(1);
+}
+.rightMenue{
+    padding: 20px;
+    background-color: #585858;
+    border-radius: 12px;
+    border: 3px solid lightblue;
+    position:absolute;
+    top:325px;
+    right: 55px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color:white;
+}
+.rightMenue span{
+    cursor: pointer;
+}
+
+@media screen and (max-width:1200px) {
+    .gigs .cards{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap:40px;
+    
+    }
+    .menueLeft{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        font-weight: 300;
+        color: rgb(181, 180, 180);
+    }
+    .menueRight{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap:10px;
+    }
+}

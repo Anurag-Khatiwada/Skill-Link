@@ -1,0 +1,72 @@
+.orders{
+    display: flex;
+    justify-content: center;
+}
+.orders .orderscontainer{
+    width:95vw;
+    padding: 50px 0;
+}
+.orders .orderscontainer .title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    border-radius: 20px;
+
+}
+.orderscontainer .title button{
+    background-color: red;
+    color: white;
+    font-weight: 500;
+    border:1px solid lightblue;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px 18px;
+
+}
+.orders .orderscontainer table{
+    width: 80%;
+    border-collapse: collapse;
+    margin:20px 90px
+}
+
+
+
+/* .orders .orderscontainer table th,td{
+    border: 1px solid lightblue;
+    padding: 8px;
+    
+} */
+.orders .orderscontainer table,
+.orders .orderscontainer table th,
+.orders .orderscontainer table td {
+    border: 1px solid lightblue;
+    text-align: center;
+}
+.orders .orderscontainer table th{
+    background-color: #333;
+}
+
+
+.orderscontainer table tr{
+    height: 50px;
+}
+
+.orderscontainer table tr td img{
+    width: 50px;
+    height: 25px;
+    object-fit: cover;
+}
+.messageimg{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    fill:rgb(72, 219, 13); 
+}
+
+/* tr:nth-child(even){
+    background-color: rgb(141, 216, 240);
+}
+tr:nth-child(odd){
+    background-color: rgb(95, 215, 175);
+} */

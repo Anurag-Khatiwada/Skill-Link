@@ -26,14 +26,20 @@ const Orders = () => {
   if (isLoading) return <p>Loading orders...</p>;
   if (error) return <p>Error fetching orders: {error.message}</p>;
 
-
   const handleContact = async (order) => {
     const freelancerId = order.freelancerId;
     const buyerId = order.buyerId;
     const id = freelancerId + buyerId;
-  
-    console.log("Buyer ID:", buyerId, "freelancer ID:", freelancerId, "Current User:", currentUser);
-  
+
+    console.log(
+      "Buyer ID:",
+      buyerId,
+      "freelancer ID:",
+      freelancerId,
+      "Current User:",
+      currentUser
+    );
+
     try {
       // Check if conversation already exists
       const res = await newRequest.get(`/conversations/single/${id}`);
@@ -56,17 +62,22 @@ const Orders = () => {
       }
     }
   };
-  
-
 
   return (
     <div className="orders">
       <div className="orderscontainer">
         <div className="title">
-          <h1>Orders</h1>
+          {
+            currentUser?.isFreelancer ? (<h1>Orders Received:</h1>):(<h1>Orders:</h1>)
+          }
         </div>
         <table>
           <tr>
+            {currentUser.isFreelancer && (
+              <>
+                <th>Buyer</th>
+              </>
+            )}
             <th>Image</th>
             <th>Title</th>
             <th>Price</th>
@@ -75,6 +86,11 @@ const Orders = () => {
           {data?.length > 0 ? (
             data.map((order) => (
               <tr key={order.id}>
+                {currentUser.isFreelancer && (
+                  <>
+                    <th>{order?.buyerUsername}</th>
+                  </>
+                )}
                 <td>
                   <img src={order?.img} alt="" />
                 </td>
@@ -82,15 +98,15 @@ const Orders = () => {
                 <td>{order?.price}</td>
 
                 <td>
-                <div onClick={() => handleContact(order)}>
-                      <svg
-                        className="messageimg"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
-                      >
-                        <path d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z" />
-                      </svg>
-                    </div>
+                  <div onClick={() => handleContact(order)}>
+                    <svg
+                      className="messageimg"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z" />
+                    </svg>
+                  </div>
                 </td>
               </tr>
             ))
@@ -99,8 +115,6 @@ const Orders = () => {
               <td colSpan="5">No orders available</td>
             </tr>
           )}
-
-          
         </table>
       </div>
     </div>

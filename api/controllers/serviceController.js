@@ -1,81 +1,5 @@
-// import serviceModel from "../models/serviceModel.js";
-// import createError from "../utils/createError.js";
-
-
-// export const createService = async (req, res, next)=>{
-//     try{
-//         // let {title, desc, totalStars, starNumber, cat, price, cover, images, shortTitle, shortDesc, deliveryTime, features, sales} = req.body;
-//         if(!req.isFreelancer){
-//             next(createError(403, "only frellencer can create service"))
-//         }
-//         const newService = new serviceModel({
-//             userId: req.userId,
-//             ...req.body
-            
-//         });
-//         const savedService = await newService.save();
-//         res.status(201).json(savedService)
-
-//     }catch(err){
-//         next(err);
-
-//     }
-// }
-
-
-// export const deleteService = async (req, res, next)=>{
-//     try{
-//         console.log(req.params.id);
-//         const service = await serviceModel.findById(req.params.id);
-//         if(!service){
-//             next(createError(404, "service not found"))
-//         }
-//         if(service.userId !== req.userId) 
-//             {
-//                 return next(createError(403, "you can only delete you service"));
-//             }    
-//         await serviceModel.findByIdAndDelete(req.params.id);
-//         return res.status(200).send("service has been deleted");
-//     }catch(err){
-//         next(err)
-//     }
-// }
-
-// export const getService = async (req, res, next)=>{
-//     console.log(req)
-//     try{
-//         const service = await serviceModel.findById(req.params.id);
-
-//         if(!service){
-//             next(createError(404, "service not found:"));
-//         };
-//         res.status(200).send(service);
-//     }catch (err){
-//         next(err);
-//     }
-// }
-
-// export const getServices = async (req, res, next)=>{
-//     const q = req.query;
-//     const filters = {
-//         ...(q.userId && {userId: q.userId }),
-//         ...(q.cat && {cat: q.cat}),
-//         ...((q.min || q.max) && {price: {...(q.min && {$gt: q.min}), ...(q.max && {$lt: q.max})}}),
-//         ...(q.search && {title: {$regex: q.search, $options: "i"}})
-//     }
-//     try{
-//         const services =await serviceModel.find(filters).sort({[q.sort]: -1})
-//         if(services.length  === 0){
-//             next(createError(404, "no services found"));
-//         }
-//         res.status(200).send(services);
-//     }catch (err){
-//         next(err);
-//     }
-// }
-
-
 import serviceModel from "../models/serviceModel.js";
+import userModel from "../models/userModel.js";
 import createError from "../utils/createError.js";
 
 export const createService = async (req, res, next) => {
@@ -130,26 +54,68 @@ export const getService = async (req, res, next) => {
     }
 };
 
+// export const getServices = async (req, res, next) => {
+//     const q = req.query;
+//     console.log(q)
+//     const filters = {
+//         ...(q.userId && { userId: q.userId }),
+//         ...(q.cat && { cat: { $regex: `^${q.cat.trim()}$`, $options: "i" } }), // Case-insensitive and exact match
+//         ...((q.min || q.max) && { price: { ...(q.min && { $gt: q.min }), ...(q.max && { $lt: q.max }) } }),
+//         ...(q.search && { title: { $regex: q.search, $options: "i" } })
+//       };
+//     console.log(filters)
+
+//     try {
+//         const services = await serviceModel.find(filters).sort({ [q.sort]: -1 });
+
+//         if (services.length === 0) {
+//             return next(createError(404, "No services found."));
+//         }
+//         return res.status(200).send(services);
+//     } catch (err) {
+//         next(err);
+//     }
+// };
+
 export const getServices = async (req, res, next) => {
     const q = req.query;
+  
     const filters = {
-        ...(q.userId && { userId: q.userId }),
-        ...(q.cat && { cat: q.cat }),
-        ...((q.min || q.max) && {price: {...(q.min && {$gt: q.min}), ...(q.max && {$lt: q.max})}}),
-        ...(q.search && { title: { $regex: q.search, $options: "i" } })
+      ...(q.userId && { userId: q.userId }),
+      ...(q.cat && { cat: { $regex: `^${q.cat.trim()}$`, $options: "i" } }), // Matches category exactly (case-insensitive)
+      ...(q.search && {
+        $or: [
+          { title: { $regex: q.search, $options: "i" } }, // Matches title (case-insensitive)
+          { cat: { $regex: q.search, $options: "i" } },   // Matches category (case-insensitive)
+        ] 
+      }),
+      ...((q.min || q.max) && { price: { ...(q.min && { $gt: q.min }), ...(q.max && { $lt: q.max }) } }),
     };
-
+  
     try {
-        const services = await serviceModel.find(filters).sort({ [q.sort]: -1 });
-
-        if (services.length === 0) {
-            return next(createError(404, "No services found."));
-        }
-        return res.status(200).send(services);
+      const services = await serviceModel.find(filters).sort({ [q.sort]: -1 });
+      if (services.length === 0) {
+        return next(createError(404, "No services found."));
+      }
+      //Manually populating user data
+      const servicesWithUserData = await Promise.all(
+        services.map(async (service)=>{
+            const user = await userModel.findById(service.userId);
+            return{
+                ...service._doc,
+                user:{
+                    username: user.username,
+                    img: user.img,
+                }
+            }
+        })
+      )
+      return res.status(200).send(servicesWithUserData);
     } catch (err) {
-        next(err);
+      next(err);
     }
-};
+  };
+  
 
 
 

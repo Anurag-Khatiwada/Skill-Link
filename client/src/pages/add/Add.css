@@ -1,38 +1,48 @@
-div{
-    color:white;
-}
 .add{
     display: flex;
     justify-content: center;
+    color: #1b1b1c; /* Neutral Fiverr color */
+    align-items: center;
+
 }
+
 .addContainer{
-    background-color: #101010;
-    width:95vw;
-    padding:3rem 0px;
+    background-color: #e3e0e0; /* White background for the form card */
+    width:1400px;
+    padding:30px 20px;
+    border-radius: 10px;
+    position: relative;
+
 }
 .addContainer h1{
-    color: white;
+    width: max-content;
+    color: #1b1b1c; /* Neutral Fiverr color */
     font-weight: 300;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
 }
 .addContainer .sections{
     display: flex;
     justify-content: space-between;
-    gap: 3rem;
+    gap: 100px;
 }
 .addContainer .sections .left,.right{
     flex:1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap:1.5rem;
+    gap:10px;
 }
+
 .addContainer .section .right{
-    gap:2rem;
+    gap:1rem;
+}
+.section .left label, .sections .left label {
+    color: #1b1b1c; /* Neutral Fiverr color */
+    font-size: 18px;
 }
  .section .left label, .sections .right label {
-    color: white;
-    font-size: 1.2rem;
+    color: #1b1b1c; /* Neutral Fiverr color */
+    font-size: 18px;
 }
 
 .addContainer .sections .left input,
@@ -41,35 +51,52 @@ div{
 .addContainer .sections .right input,
 
 .addContainer .sections .right textarea{
+    padding: 20px;
+    background-color: transparent;
+    border: 1px solid #504f4f;
+    border-radius: 10px;
+    outline: none;
+    color: #1b1b1c; /* Neutral Fiverr color */
+}
+
+
+.addContainer .sections .left select{
     padding: 1.3rem;
     background-color: transparent;
-    border: 1px solid aqua;
+    border: 1px solid #504f4f;
     border-radius: 10px;
     outline: none;
-    color:white
+    color: #1b1b1c; /* Neutral Fiverr color */
+    
 }
-.addContainer .sections .left select,
-.addContainer .sections .right select{
-    padding: 1.3rem;
-    background-color: rgb(19, 18, 18);
-    border: 1px solid aqua;
-    border-radius: 10px;
-    outline: none;
-    color:white
+.addContainer .sections .left select option{
+    position: absolute;
+    top: 20%
 }
+
+
+
 .addContainer .sections .right textarea {
     width: 100%;
     height: auto;
     resize: vertical;
-    min-height:6rem; 
+    min-height:3rem; 
 }
 .sections .left button{
-    background-color: red;
+    background-color: #18a965; /* Fiverr green */
     color: white;
-    padding: 1rem 1rem;
-    border-radius: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem;
+    font-size: 1rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
 }
+.sections .left button:hover {
+    background-color: #0b7743; /* Slightly darker green on hover */
+    box-shadow: 0 5px 15px rgba(29, 191, 115, 0.4);
+  }
 
 .sections .right form .add{
     display: flex;
@@ -81,23 +108,26 @@ div{
     height: 50px;
 }
 .sections .right .add button{
-    background-color: red;
+    background-color: #18a965; /* Fiverr green */
     color: white;
-    width: 100px;
-    height: 100px;
-    font-size: 16px;
-    padding: 1rem 1rem;
-    border-radius: 8px 20px;
-    cursor: pointer;
     border: none;
-    outline: none;
-    margin-left: 10px; 
+    border-radius: 8px;
+    padding: 1.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
 }
+.sections .right .add button:hover {
+    background-color: #0b7743; /* Slightly darker green on hover */
+    box-shadow: 0 5px 15px rgba(29, 191, 115, 0.4);
+  }
 
 .imagesinput{
     display: flex;
     gap: 50px;
-    border: 1px solid aqua;
+    border: 1px solid #504f4f;
+    border-radius: 10px;
     padding: 1rem 1rem;
     align-items: center;
 }
@@ -105,10 +135,10 @@ div{
 .imagesinput .inputImages{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
 }
-.imagesinput .imageAdd{
+.imagesinput button{
     background-color: red;
     color: white;
     width: 100px;
@@ -129,12 +159,12 @@ div{
 }
 .addedFeatures button{
     background-color: transparent;
-    color: white;
-    width: 120px;
-    height: 90px;
+    color: #1b1b1c;
+    width: max-content;
+    height: 50px;
     font-size: 16px;
     padding: 1rem 1rem;
-    border: 2px solid red;
+    border: 2px solid #504f4f;
     border-radius: 8px 20px;
     cursor: pointer;
     outline: none;

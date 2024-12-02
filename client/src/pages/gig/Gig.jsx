@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Gig.css";
 import { Slider } from "infinite-react-carousel";
 import { useQuery } from "@tanstack/react-query";
@@ -8,19 +8,43 @@ import Reviews from "../../components/reviews/Reviews";
 
 const Gig = () => {
   const { id } = useParams();
-
+  const [isloggedin, setIsloggedin] = useState(false)
+  const [ordered, setOrdered] = useState(false)
   const navigate = useNavigate(); // Initialize useNavigate
+  
+  useEffect(()=>{
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if(currentUser){
+      setIsloggedin(true)
+    }
+  },[])
 
   // Function to handle navigation
   const handlePaymentNavigation = async (id) => {
-    // try {
-    //   const res = await newRequest.post(`/orders/create-payment-intent/${id}`);
-    //   setClientSecret(res.data.clientSecret);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    navigate(`/pay/${id}`); // Navigate to the payment route
+      // Check if the user is logged in by checking localStorage directly
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (!currentUser) {
+        // If not logged in, navigate to login
+        navigate(`/login`);
+      } else {
+        const res = await newRequest.get('/orders');
+        const orderExists = res?.data?.some((order) => order.serviceId === id); // Check if the service is already ordered
+    
+        if (orderExists) {
+          setOrdered(true);
+          // If service is already ordered, show message and redirect to orders page after 5 seconds
+          setTimeout(() => {
+          navigate("/orders");
+        }, 5000);
+      }else{
+        // If logged in, navigate to payment page
+        navigate(`/pay/${id}`);
+      }
+    }
   };
+  
+  
+  
 
   //Fetching services using React Query
 
@@ -63,7 +87,14 @@ const Gig = () => {
   const latestDelivery = new Date();
   latestDelivery.setDate(latestDelivery.getDate() - data?.deliveryTime || 0);
 
-  return (
+  return (  
+    <>
+    {
+      ordered ? (
+      <div>
+        You have already bought this service. Redericting to Orders page please wait
+      </div>
+    ):(
     <div className="gig">
       {isLoading ? (
         "Loading..."
@@ -81,6 +112,7 @@ const Gig = () => {
             ) : errorUser ? (
               "something went wrong"
             ) : (
+              <Link className="link" to={`/profile/${data?.userId}`}>
               <div className="user">
                 <img
                   className="pp"
@@ -110,6 +142,7 @@ const Gig = () => {
                   </div>
                 )}
               </div>
+              </Link>
             )}
             <Slider slidesToShow={1} arrowScroll={1} className="sliders">
               {Array.isArray(data?.images) && data?.images.length > 0 ? (
@@ -134,7 +167,9 @@ const Gig = () => {
               <div className="seller">
                 <h2>About The Freelancer</h2>
                 <div className="user">
+                  <Link className="link" to={`/profile/${data?.userId}`} >
                   <img src={dataUser?.img || "/img/noavatar.svg"} alt="" />
+                  </Link>
                   <div className="info">
                     <span>{dataUser.username}</span>
                     {!isNaN(data.totalStars / data.starNumber) && (
@@ -158,17 +193,16 @@ const Gig = () => {
                         </span>
                       </div>
                     )}
-                    <button>Contact Me</button>
                   </div>
                 </div>
                 <div className="box">
                   <div className="items">
                     <div className="item">
-                      <div className="title">From</div>
+                      <div className="title">From:</div>
                       <div className="desc">{dataUser.country}</div>
                     </div>
                     <div className="item">
-                      <div className="title">Member Since</div>
+                      <div className="title">Member Since:</div>
                       <div className="desc">
                         {new Date(dataUser?.createdAt).toLocaleDateString(
                           "en-US",
@@ -177,11 +211,11 @@ const Gig = () => {
                       </div>
                     </div>
                     <div className="item">
-                      <div className="title">Avg. response Time</div>
+                      <div className="title">Avg. response Time:</div>
                       <div className="desc">4 hours</div>
                     </div>
                     <div className="item">
-                      <div className="title">Last delivery</div>
+                      <div className="title">Last delivery:</div>
                       <div className="desc">
                         {latestDelivery.toLocaleDateString("en-US", {
                           year: "numeric",
@@ -191,7 +225,7 @@ const Gig = () => {
                       </div>
                     </div>
                     <div className="item">
-                      <div className="title">Languages</div>
+                      <div className="title">Languages:</div>
                       <div className="desc">English</div>
                     </div>
                   </div>
@@ -232,6 +266,8 @@ const Gig = () => {
         </div>
       )}
     </div>
+  )}
+  </>
   );
 };
 

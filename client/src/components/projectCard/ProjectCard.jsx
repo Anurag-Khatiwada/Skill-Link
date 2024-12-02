@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom';
 
 const ProjectCard = ({item}) => {
 
+
   return (
-    <Link to="/gig/:id" className='link'>
+    <Link to={`gig/${item?._id}`} className='link'>
         <div className='projectCard'>
-            <img src={item.img} alt="" />
+            <img src={item.cover} alt="" />
             <div className="info">
-                <img src={item.pp} alt="" />
+                <img src={item?.user?.img} alt="" />
                 <div className="texts">
                     <h2>{item.cat}</h2>
-                    <span>{item.username}</span>
+                    <span>{item?.user?.username}</span>
                 </div>
             </div>
         </div>

@@ -49,7 +49,6 @@ const GigCards = ({ item }) => {
         </div>
         <hr />
         <div className="details">
-          <img src="./img/heart.svg" alt="" />
           <div className="price">
             <span>STARTING AT</span>
             <h2>RS. {item.price}</h2>

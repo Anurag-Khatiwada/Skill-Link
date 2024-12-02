@@ -62,12 +62,13 @@
     line-height: 25px;
     
 }
+
 .gigContainer .left .seller{
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #101010;
+    background-color: #484747;  /* Slightly lighter shade than the background */
     padding: 20px 20px;
     border-radius: 20px;
     width:50vw
@@ -88,25 +89,21 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    background-color: transparent;
     gap: 10px;
 }
-.seller .user .info button{
-    background-color: red;
-    color: white;
-    padding: 8px 16px;
-    outline: none;
-    border:2px solid lightblue;
-    border-radius: 15px ;
-}
-.seller .user .info button:hover{
-    transform: scale(1.08);
-}
-.box{
+
+
+.box {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border: 1px solid lightblue;
+    border: 2px solid #3c3f41; /* Slightly darker border */
+    border-radius: 15px;  /* Rounded corners */
     padding: 20px 30px;
+    background: linear-gradient(145deg, #161515, #2e2d2d); /* Subtle gradient background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
 }
 .box p{
     font-size: 0.9rem;
@@ -131,9 +128,12 @@
     margin-top: 50px;
 }
 .reviews{
-    background-color: #101010;
+    /* background-color: #101010; */
     padding: 20px 30px;
     border-radius: 20px ;
+    background: linear-gradient(145deg, #161515, #2e2d2d); /* Subtle gradient background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
 }
 .reviews .item{
     display: flex;
@@ -194,7 +194,7 @@
 
 .gig .gigContainer .right{
     flex:1;
-    border: 2px solid lightblue;
+    border: 2px solid rgb(25, 26, 26);
     border-radius: 14px;
     padding:20px;
     display: flex;
@@ -202,10 +202,11 @@
     gap:20px;
     position: sticky;
     right:0px;
-    top:25px;
+    top:150px;
     height: max-content;
-    background-color: #101010;
-}
+    background: linear-gradient(145deg, #161515, #2e2d2d); /* Subtle gradient background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */}
 .gig .gigContainer .right .price{
     display: flex;
     align-items: center;
@@ -213,6 +214,8 @@
 }
 .gig .gigContainer .right .price h2 {
     font-weight: 300;
+    color: green
+
 }
 .gig .gigContainer .right .price h3 {
     font-weight: 500;
@@ -261,15 +264,23 @@
 .gigContainer .right Link{
     width: 30px;
 }
-.gigContainer .right  button{
-    background-color: red;
-    padding: 8px 8px;
-    outline: none;
-    border: 1px solid lightblue;
-    border-radius: 10px;
-    color:white;
+.gigContainer .right button {
+    background-color: #1dbf73; /* Fiverr green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem;
+    font-size: 1rem;
     cursor: pointer;
-}
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .gigContainer .right button:hover {
+    background-color: #17a863; /* Slightly darker green on hover */
+    box-shadow: 0 5px 15px rgba(29, 191, 115, 0.4);
+  }
+  
 .gigContainer .right button:hover{
     transform: 1.08;
 }

@@ -3,7 +3,7 @@ import './Gigs.css';
 import { useQuery } from '@tanstack/react-query';
 import GigCards from '../../components/gigCards/GigCards';
 import newRequest from '../../utils/newRequest';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Gigs = () => {
   const [open, setOpen] = useState(false);
@@ -12,23 +12,50 @@ const Gigs = () => {
   const maxRef = useRef();
   const { search } = useLocation(); // Extracting search query from the location
 
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+
+  // Get the value of the 'cat' query parameter
+  const cat = searchParams.get('cat');
+
   
   // Fetching services using React Query
+  // const { isLoading, error, data, refetch } = useQuery({
+  //   queryKey: ['services', search], // Include search in the query key
+  //   queryFn: async () => {
+  //     const minValue = minRef.current?.value || 0; // Default to 0 if no value is provided
+  //     const maxValue = maxRef.current?.value || 1000000000000; // Default to a high number or any max value you choose
+
+  //     try {
+  //       const response = await newRequest.get(`/services${search.toLowerCase()}&min=${minValue}&max=${maxValue}&sort=${sort}`);
+  //       console.log(response)
+  //       return response.data; // Return the data from the response
+  //     } catch (err) {
+  //       console.error('Error Response:', err.response); // Log the full error response for debugging
+  //       throw new Error(err.response?.data?.message || 'Failed to fetch data'); // Error handling
+  //     }
+  //   },
+  //   refetchOnWindowFocus: false, // Prevent refetch on window focus
+  // });
+
   const { isLoading, error, data, refetch } = useQuery({
     queryKey: ['services', search], // Include search in the query key
     queryFn: async () => {
-      const minValue = minRef.current?.value || 0; // Default to 0 if no value is provided
-      const maxValue = maxRef.current?.value || 1000000000000; // Default to a high number or any max value you choose
-
+      const minValue = minRef.current?.value || 0;
+      const maxValue = maxRef.current?.value || 1000000000000;
+  
       try {
-        const response = await newRequest.get(`/services${search.toLowerCase()}&min=${minValue}&max=${maxValue}&sort=${sort}`);
-        return response.data; // Return the data from the response
+        const response = await newRequest.get(
+          `/services${search.toLowerCase()}&min=${minValue}&max=${maxValue}&sort=${sort}`
+        );
+        console.log(response);
+        return response.data;
       } catch (err) {
-        console.error('Error Response:', err.response); // Log the full error response for debugging
-        throw new Error(err.response?.data?.message || 'Failed to fetch data'); // Error handling
+        console.error('Error Response:', err.response);
+        throw new Error(err.response?.data?.message || 'Failed to fetch data');
       }
     },
-    refetchOnWindowFocus: false, // Prevent refetch on window focus
+    refetchOnWindowFocus: false,
   });
 
   // Resort function to update sort state
@@ -46,15 +73,18 @@ const Gigs = () => {
     refetch(); // Trigger a refetch with the current filters
   };
 
+
+
+
   // Loading and error states
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div>No any services found</div>;
 
   return (
     <div className="gigs">
       <div className="gigsContainer">
-        <span className="breadcrumbs">SKILL-LINK {'>'} GRAPHIC & DESIGN</span>
-        <h1>AI Artists</h1>
+        <span className="breadcrumbs"><Link className='link' to='/'>SKILL-LINK</Link> {'>'} {data?.[0]?.cat.toUpperCase()}</span>
+        <h1>{data?.[0]?.cat.toUpperCase()}</h1>
         <p>Explore Art and Technologies Here</p>
         <div className="menue">
           <div className="menueLeft">

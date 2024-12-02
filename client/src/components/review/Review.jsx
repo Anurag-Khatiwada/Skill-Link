@@ -2,6 +2,7 @@ import React from "react";
 import "./Review.css";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
+import { Link } from "react-router-dom";
 
 const Review = ({ review }) => {
   const { isLoading, error, data } = useQuery({
@@ -18,21 +19,24 @@ const Review = ({ review }) => {
     },
     refetchOnWindowFocus: false, // Prevent refetch on window focus
   });
+
   return (
     <div className="review">
-      {isLoading ? "Loading..." : (error? ("something went wrong"):(<div className="user">
+      <div className="user">
+        <Link className="link" t0={`/profile/${review.userId}`}>
         <img
           className="pp"
           src={data?.img || "/img/noavatar.svg"}
           alt=""
-        />
+          />
+        </Link>
         <div className="info">
           <span>{data?.username}</span>
           <div className="country">
             <span>From: {data?.country }</span>
           </div>
         </div>
-      </div>))}
+      </div>
       <div className="stars">
         {Array(review.star)
           .fill()
@@ -44,16 +48,6 @@ const Review = ({ review }) => {
         <span>{review?.star}</span>
       </div>
       <p>{review?.desc}</p>
-      <div className="helpful">
-        <span>Helpful?</span>
-        <span>
-          <img src="/img/like.svg" alt="" />
-          yes
-        </span>
-        <span>
-          <img src="/img/dislike.svg" alt="" /> NO
-        </span>
-      </div>
     </div>
   );
 };

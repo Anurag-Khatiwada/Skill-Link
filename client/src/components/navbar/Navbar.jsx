@@ -8,6 +8,8 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
 
+  const navigate = useNavigate()
+
   // Get current user from local storage
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -26,7 +28,6 @@ const Navbar = () => {
     };
   }, []);
 
-  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
@@ -40,7 +41,9 @@ const Navbar = () => {
 
   const BecomeFreelancer = async () => {
     try {
-      const res = await newRequest.put(`/users/${currentUser._id}`,{isFreelancer:true});
+      const res = await newRequest.put(`/users/${currentUser._id}`, {
+        isFreelancer: true,
+      });
       if (res.status === 200) {
         alert("You are now a freelancer");
 
@@ -94,7 +97,7 @@ const Navbar = () => {
                       </Link>
                     </>
                   )}
-                  <Link to={"/profile/"+currentUser._id} className="link">
+                  <Link to={"/profile/" + currentUser._id} className="link">
                     <span>Profile</span>
                   </Link>
                   <Link to="/orders" className="link">
@@ -125,29 +128,53 @@ const Navbar = () => {
         <>
           <hr />
           <div className="menu">
-            <Link to="/gigs?cat=graphic&cat=design" className="link">
+            <Link
+              to={`/gigs?cat=${encodeURIComponent("graphic & design")}`}
+              className="link"
+            >
               Graphic & Design
             </Link>
-            <Link to="/gigs?cat=video&cat=animation" className="link">
+            <Link
+              to={`/gigs?cat=${encodeURIComponent("Video & Animation")}`}
+              className="link"
+            >
               Video & Animation
             </Link>
-            <Link to="/gigs?cat=writing&cat=translation" className="link">
+            <Link
+              to={`/gigs?cat=${encodeURIComponent("writing & translation")}`}
+              className="link"
+            >
               Writing & Translation
             </Link>
-            <Link to="/gigs?cat=AI services" className="link">
+            <Link
+              to={`/gigs?cat=${encodeURIComponent("AI services")}`}
+              className="link"
+            >
               AI Services
             </Link>
-            <Link to="/gigs?cat=digital marketing" className="link">
+            <Link
+              to={`/gigs?cat=${encodeURIComponent("digital marketing")}`}
+              className="link"
+            >
               Digital Marketing
             </Link>
-            <Link to="/gigs?cat=music&cat=audio" className="link">
+            <Link
+              to={`/gigs?cat=${encodeURIComponent("music & audio")}`}
+              className="link"
+            >
               Music & Audio
             </Link>
-            <Link to="/gigs?cat=programming&cat=tech" className="link">
+            <Link
+              to={`/gigs?cat=${encodeURIComponent("programming & tech")}`}
+              className="link"
+            >
               Programming & Tech
             </Link>
-            <Link to="/gigs?cat=life style" className="link">
-              Life Style
+            <Link
+              to={`/gigs?cat=${encodeURIComponent("logo design")}`}
+              className="link"
+            >
+              Logo Design
             </Link>
           </div>
         </>

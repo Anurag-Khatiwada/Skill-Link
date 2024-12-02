@@ -5,11 +5,10 @@
     margin-top: 20px;
 }
 .gigs .gigsContainer{
-    width:90vw;
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
-    background-color: #101010;
+    background-color: #3a3a3a;  /* Slightly lighter shade than the background */
     gap:15px;
     border-radius: 20px;
     margin:5px 40px; 
@@ -52,18 +51,23 @@
 .menueLeft input::placeholder {
     color: azure;
 }
-.menueLeft button{
-    background-color: red;
+
+.menueLeft button {
+    background-color: #1dbf73; /* Fiverr green */
     color: white;
-    font-weight: 500;
     border: none;
+    border-radius: 8px;
+    padding: 0.8rem;
+    font-size: 1rem;
     cursor: pointer;
-    padding: 6px 10px;
-    border-radius: 5px 10px;
-}
-.menueLeft button:hover{
-    transform: scale(1.1);
-}
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .menueLeft button:hover {
+    background-color: #17a863; /* Slightly darker green on hover */
+    box-shadow: 0 5px 15px rgba(29, 191, 115, 0.4);
+  }
 .menueRight{
     display: flex;
     align-items: center;
@@ -95,6 +99,23 @@
 }
 
 @media screen and (max-width:1200px) {
+    .gigs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .gigs .gigsContainer{
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        background-color: #3a3a3a;  /* Slightly lighter shade than the background */
+        gap:15px;
+        border-radius: 20px;
+        margin:5px 40px; 
+        overflow-x: hidden;
+
+    }
     .gigs .cards{
         display: flex;
         justify-content: center;

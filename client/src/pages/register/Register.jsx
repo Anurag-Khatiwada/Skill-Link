@@ -143,7 +143,7 @@
 // export default Register;
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 import upload from "../../utils/upload.js";
 import newRequest from "../../utils/newRequest.js";
@@ -251,6 +251,12 @@ const Register = () => {
           <button className="submit" type="submit">
             Register
           </button>
+          <p className="signin">
+          Already have an account?{" "}
+          <Link className='link' to="/login">
+            Sign In
+          </Link>
+        </p>
         </div>
         <div className="right">
           <h1>Become a Freelancer</h1>

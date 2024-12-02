@@ -81,13 +81,13 @@ const Reviews = ({ gigId }) => {
       <div className="reviews">
         <h2>Reviews</h2>
         <hr />
-        {isLoading
-          ? "Loading..."
-          : error
-          ? "Something went wrong"
-          : Array.isArray(data) && data.length > 0
-          ? data.map((review) => <Review key={review._id} review={review} />)
-          : "No reviews yet."}
+        {isLoading ? (
+          "Loading..."
+        ) : Array.isArray(data) && data.length > 0 ? (
+          data.map((review) => <Review key={review._id} review={review} />)
+        ) : (
+          "No reviews yet."
+        )}
       </div>
       {canReview && <div className="add">
         <h3>Add a review</h3>

@@ -7,7 +7,7 @@
     margin: 50px 0px;
 }
 .footerContainer{
-    background-color: #101010;
+    background-color: #3a3a3a;  /* Slightly lighter shade than the background */
     width: 90vw;
     height:100%;
     margin:auto;
@@ -30,7 +30,7 @@
         display:flex;
     }
     .footerContainer{
-        background-color: #101010;
+        background-color: #3a3a3a;  /* Slightly lighter shade than the background */
         width: 100%;
         height:100%;
         display: flex;

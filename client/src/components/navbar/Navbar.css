@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #101010;
+    /* background-color: #0f0f0f; */
+    background: linear-gradient(135deg, #2e2e2e, #1a1a1a);
     transition: 0.5 all ease;
     position: sticky;
     top: 0;
@@ -10,8 +11,8 @@
    z-index: 10;
 }
 .navbar.active{
-    background-color: black;
-    color:white;
+    background-color: rgb(60, 59, 59);
+    color:black;
 }
 .container{
     display:flex;
@@ -27,11 +28,11 @@
 }
 .container.active{
     background-color: black;
-    color:white;
+    color:black;
 }
 
 .logo{
-    color:ghostwhite;
+    color:#66d1cc;
     font-size: 30px;
 
 }
@@ -102,11 +103,11 @@ hr{
     position: absolute;
     top:50px;
     right:-60px;
-    background-color:#484545;
+    background-color:#1f1f1f;
     padding:20px;
-    border:1px solid black;
+    border:1px solid #383838;
     border-radius: 12px;
-    color:white;
+    color:#e0e0e0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -116,6 +117,12 @@ hr{
     align-items: center;
 
     
+}
+.options:hover{
+    background-color:#2c2c2c;
+
+
+
 }
 .options span{
     cursor: pointer;

@@ -1,13 +1,38 @@
-import React from 'react';
-import "./Home.css"
+import React, { useEffect, useState } from 'react';
+import "./Home.css";
 import Featured from '../../components/featured/Featured';
 import Slide from '../../components/slide/Slide';
 import { cards } from "../../data";
 import { projects } from "../../data";
 import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from '../../components/projectCard/ProjectCard';
+import newRequest from "../../utils/newRequest.js";
 
 const Home = () => {
+
+  const [allServices, SetAllServices] = useState([]);
+
+  const fetchAllServices = async () => {
+    try {
+      const response = await newRequest.get('/services');
+      if (response && response.data) {
+        SetAllServices(response.data); // Set state with response data
+      } else {
+        console.error('No services found in the response');
+      }
+    } catch (error) {
+      console.error('Error fetching services:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllServices();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log('Updated allServices:', allServices); // Log updated state for debugging
+  // }, [allServices]);
+
   return (
     <div>
       <Featured />
@@ -53,21 +78,21 @@ const Home = () => {
                 <p>Your funds are secure with us. Release payments only when you're satisfied.</p>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
-      <h1 className='PROFILE'>Profile:</h1> 
+      <h1 className='PROFILE'>Profile:</h1>
       <Slide slidesToShow={3} arrowsScroll={3}> 
-        {
-          projects.map(card => (
-            <ProjectCard key={card.id} item={card} />
+        {allServices.length > 0 ? (
+          allServices.map(item => (
+            <ProjectCard key={item._id} item={item} />
           ))
-        }
+        ) : (
+          <p>No services available at the moment.</p>
+        )}
       </Slide>
     </div>
   );
 };
 
 export default Home;
-

@@ -68,7 +68,7 @@
   }
   
   .button-group button:last-child {
-    background-color: #dc3545; /* Red for cancel button */
+    background-color: #e51f33; /* Red for cancel button */
   }
   
   .button-group button:last-child:hover {
@@ -88,6 +88,7 @@
     margin-left: 10px;  
   }
   .certificate-cv{
-    border:1px solid aqua;
-    padding:5px;
+    border:1px solid rgb(145, 142, 142);
+    border-radius: 5px;
+    padding:8px;
   }

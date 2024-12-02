@@ -3,7 +3,7 @@
     height:90vh;
     display:flex;
     margin: auto;
-    background-color: #101010;
+    background-color: #3a3a3a;  /* Slightly lighter shade than the background */
     border-radius: 22px;
     padding: 10px;
 }

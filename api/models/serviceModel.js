@@ -56,7 +56,7 @@ const serviceSchema = new mongoose.Schema({
     sales: {
         type: Number,
         default: 0,
-    },
+    }
 
     
 

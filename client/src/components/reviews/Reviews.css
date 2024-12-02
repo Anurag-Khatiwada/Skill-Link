@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    color: white
 }
 .add .addForm{
     display: flex;
@@ -19,7 +20,7 @@
 .add .addForm input{
     padding: 20px;
     width: 60%;
-    border: 2px solid aqua;
+    border: 2px solid gray;
     border-radius: 10px;;
 }
 .add .addForm .select{
@@ -28,7 +29,7 @@
     align-self: flex-end;
     color: white;
     background-color: transparent;
-    border: 2px solid aqua;
+    border: 2px solid gray;
     border-radius: 10px;;
 }
 .add .addForm .select option{
@@ -36,13 +37,20 @@
     border: 2px solid aqua;
 
 }
-.add .addForm button{
-    background-color:red;
-    color:white;
-    border:1px solid white;
-    border-radius: 8px 15px;
-    padding:12px;
-    font-size: 22px;
+.add .addForm button {
+    background-color: #1dbf73; /* Fiverr green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem;
+    font-size: 1rem;
     cursor: pointer;
-    align-self: flex-end;
-}
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .add .addForm button:hover {
+    background-color: #17a863; /* Slightly darker green on hover */
+    box-shadow: 0 5px 15px rgba(29, 191, 115, 0.4);
+  }
+  

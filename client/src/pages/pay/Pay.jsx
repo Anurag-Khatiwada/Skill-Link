@@ -75,7 +75,7 @@ useEffect(() => {
 
   return <div className="pay">
     {clientSecret && (
-        <Elements options={options} stripe={stripePromise}>
+        <Elements className='element' options={options} stripe={stripePromise}>
           <CheckoutForm />
         </Elements>
       )}

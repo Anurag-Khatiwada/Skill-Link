@@ -1,10 +1,13 @@
 import orderModel from "../models/orderModel.js"
 import createError from "../utils/createError.js"
 import serviceModel from "../models/serviceModel.js"
+import userModel from "../models/userModel.js";
 import  { Stripe } from 'stripe'
 
 export const intent = async (req, res, next) => {
     const stripe = new Stripe(process.env.STRIPE);
+
+    console.log(req.body)
     
     const service = await serviceModel.findById(req.params.id);
 
@@ -12,6 +15,7 @@ export const intent = async (req, res, next) => {
     const existingOrder = await orderModel.findOne({
         payment_intent: req.body.payment_intent
     });
+    console.log(existingOrder)
 
     if (existingOrder) {
         return res.status(400).send({ message: "Order already exists" });
@@ -35,7 +39,6 @@ export const intent = async (req, res, next) => {
         payment_intent: paymentIntent.id,
     });
 
-    console.log(newOrder);
 
     try {
         await newOrder.save();
@@ -51,14 +54,24 @@ export const intent = async (req, res, next) => {
 
 export const getOrders = async (req, res, next)=>{
     try{
-        const orders = await orderModel.find({
-            ...(req.isFreelance? {freelancerId: req.userId} : {buyerId: req.userId}),
-            isCompleted: true,
-        })
+        const ordersQuery = req.isFreelancer ? {freelancerId: req.userId, isCompleted: true}:{buyerId: req.userId, isCompleted: true}
+        const orders = await orderModel.find(ordersQuery);
+
         if(!orders){
             return next(createError(404, "no orders found"))
         }
-        res.status(200).send(orders);
+        if(req.isFreelancer){
+            const orderWithBuyerInfo = await Promise.all(
+                orders.map(async (order)=>{
+                    const buyer = await userModel.findById(order.buyerId);
+                    order.buyerUsername = buyer.username
+                    return order
+                })
+            );
+            res.status(200).send(orderWithBuyerInfo)
+        }else{
+            res.status(200).send(orders)
+        }
     }catch(err){
         next(err)
     }
@@ -92,12 +105,9 @@ export const checkOrderCompletion = async (req, res, next)=>{
             buyerId: req.userId,
             isCompleted: true
         })
-        console.log(completedOrder)
         if (completedOrder) {
-            console.log("Sending {canReview: true}");
             res.status(200).json({ canReview: true });
           } else {
-            console.log("Sending {canReview: false}");
             res.status(200).json({ canReview: false });
           }
           

@@ -1,3 +1,10 @@
 .pay{
+    display: flex;
     color: white;
+    width: 1500px;
+    justify-content: center;
+}
+.pay .element{
+    width: 2000px;
+    
 }

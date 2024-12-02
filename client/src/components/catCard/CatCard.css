@@ -1,40 +1,72 @@
-.catCard{
-    width:20vw;
+.catCard {
+    width: 20vw;
     height: 400px;
-    color:white;
+    color: white;
     border-radius: 12px;
     cursor: pointer;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:20px;
-    background-color: rgb(73, 73, 73);
+    gap: 20px;
+    background: linear-gradient(145deg, #a7a6a6, #383737); /* Light gradient for a clean look */
     text-decoration: none;
-    -webkit-box-shadow: 0px 0px 16px -6px rgba(255.255,255,0.59);
-    box-shadow:  0px 0px 25px -6px rgba(255.255,255,0.59);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-.cardImg{
-    width:90%;
+.catCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cardImg {
+    width: 90%;
     height: 70%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #e7dddd; /* Vibrant border for emphasis */
 }
-.cardImg img{
+
+.cardImg img {
     width: 100%;
-    height:100%;
+    height: 100%;
     object-fit: cover;
 }
-.catCard .desc{
-    font-weight: 800;
+
+.catCard .desc {
+    font-weight: 600;
     margin-top: 20px;
-    color:Black;
-    font-style: bold;
-    text-decoration: none;
+    color: #272626; /* Dark grey for readability */
+    font-size: 16px;
+    text-align: center;
 }
-.catCard .title{
-    font-weight: 900;
-    font-style: bold;
-    font-size:24px;
-    text-decoration: none;
-    color:Black;
+
+.catCard .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 22px;
+    color: #161616; /* Dark text for emphasis */
     margin-bottom: 10px;
+    text-transform: uppercase; /* Adds a modern touch */
+}
+
+@media screen and (max-width: 1000px) {
+    .catCard {
+        width: 25vw;
+        height: 300px;
+    }
+
+    .cardImg {
+        height: 60%;
+    }
+
+    .catCard .desc {
+        font-size: 14px;
+    }
+
+    .catCard .title {
+        font-size: 18px;
+    }
 }

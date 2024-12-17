@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import "./Orders.css";
 import newRequest from "../../utils/newRequest";
 const Orders = () => {
-  const [orderStatus, setOrderStatus] = useState("");
+  const [orderStatus, setOrderStatus] = useState("Received");
   const [setStatus, setSetStatus] = useState(false);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 

@@ -1,4 +1,7 @@
 .gigCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out elements within the card */
     width: 20vw;
     height: 55vh;
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(240, 240, 240, 0.6));
@@ -26,7 +29,15 @@
     flex-direction: column;
     gap: 10px;
 }
-
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 15px;
+    flex-grow: 1; /* Allow the info section to grow as needed */
+    overflow: hidden;
+}
 .info .user {
     display: flex;
     align-items: center;
@@ -87,7 +98,13 @@
     justify-content: space-between;
     height: 20px;
 }
-
+.details {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto; /* Ensure it stays aligned properly */
+}
 .details img {
     width: 18px;
     height: 18px;
@@ -97,16 +114,17 @@
 .details .price {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;  /* Align to the right */
+    align-items: flex-start ;  /* Align to the right */
     color: #0ca838;  /* Green color for visibility */
     font-weight: 700;
 }
 
 .details .price span {
-    color: #b90e0e;
+    color: #333;  /* Dark Gray, ensures readability on light background */
     font-size: 0.8rem;
     font-weight: normal;
 }
+
 
 .details .price h2 {
     color: #0ca838;  /* Green color for the price */

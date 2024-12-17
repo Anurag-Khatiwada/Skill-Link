@@ -50,7 +50,7 @@ const GigCards = ({ item }) => {
         <hr />
         <div className="details">
           <div className="price">
-            <span>STARTING AT</span>
+            <span>STARTING AT :</span>
             <h2>RS. {item.price}</h2>
           </div>
         </div>

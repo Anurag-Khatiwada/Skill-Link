@@ -71,7 +71,7 @@ const Navbar = () => {
           <Link to="/" className="link">
             <span>Home</span>
           </Link>
-          {!currentUser?.isFreelancer && (
+          {currentUser&&!currentUser?.isFreelancer && (
             <Link to="#" className="link">
               <span onClick={BecomeFreelancer}>Become a Freelancer</span>
             </Link>

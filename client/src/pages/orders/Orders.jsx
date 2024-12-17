@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import "./Orders.css";
 import newRequest from "../../utils/newRequest";
 const Orders = () => {
+  const [orderStatus, setOrderStatus] = useState("");
+  const [setStatus, setSetStatus] = useState(false);
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const navigate = useNavigate();
@@ -62,14 +64,31 @@ const Orders = () => {
       }
     }
   };
-
+  const handleStatusChange = (e) => {
+    e.preventDefault();
+    setOrderStatus(e.target.value);
+  };
+  console.log(orderStatus);
+  const handleStatusUpdate = async (orderId) => {
+    console.log(orderId);
+    const res = await newRequest.put(`/orders/updateOrder/${orderId}`, {
+      orderStatus,
+    });
+    window.location.reload();
+    console.log(res);
+  };
+  const handelSetStatus = () => {
+    setSetStatus(true);
+  };
   return (
     <div className="orders">
       <div className="orderscontainer">
         <div className="title">
-          {
-            currentUser?.isFreelancer ? (<h1>Orders Received:</h1>):(<h1>Orders:</h1>)
-          }
+          {currentUser?.isFreelancer ? (
+            <h1>Orders Received:</h1>
+          ) : (
+            <h1>Orders:</h1>
+          )}
         </div>
         <table>
           <tr>
@@ -82,6 +101,7 @@ const Orders = () => {
             <th>Title</th>
             <th>Price</th>
             <th>Contact</th>
+            <th>Order Status</th>
           </tr>
           {data?.length > 0 ? (
             data.map((order) => (
@@ -107,6 +127,54 @@ const Orders = () => {
                       <path d="M160 368c26.5 0 48 21.5 48 48v16l72.5-54.4c8.3-6.2 18.4-9.6 28.8-9.6H448c8.8 0 16-7.2 16-16V64c0-8.8-7.2-16-16-16H64c-8.8 0-16 7.2-16 16V352c0 8.8 7.2 16 16 16h96zm48 124l-.2 .2-5.1 3.8-17.1 12.8c-4.8 3.6-11.3 4.2-16.8 1.5s-8.8-8.2-8.8-14.3V474.7v-6.4V468v-4V416H112 64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H448c35.3 0 64 28.7 64 64V352c0 35.3-28.7 64-64 64H309.3L208 492z" />
                     </svg>
                   </div>
+                </td>
+                <td
+                  className={
+                    order.orderStatus === "Received"?"yellow"
+                      : order.orderStatus === "Accepted"? "yellow"
+                      : order.orderStatus === "On Progress"
+                      ? "blue"
+                      : order.orderStatus === "Cancelled"
+                      ? "red"
+                      : "green"
+                  }
+                >
+                  {order?.orderStatus}
+                  {currentUser.isFreelancer && (
+                    <>
+                      {!setStatus && order.orderStatus !== "Cancelled" &&
+                        order.orderStatus !== "Completed" && <button
+                        onClick={handelSetStatus}
+                        className="openSetStatus"
+                      >
+                        Set Status
+                      </button>
+                      }
+                      {setStatus &&
+                        order.orderStatus !== "Cancelled" &&
+                        order.orderStatus !== "Completed" && (
+                          <>
+                            <select
+                              className="orderStatusSelect"
+                              value={orderStatus}
+                              onChange={handleStatusChange}
+                            >
+                              <option value="Received">Received</option>
+                              <option value="Accepted">Accepted</option>
+                              <option value="On Progress">On Progress</option>
+                              <option value="Cancelled">Cancelled</option>
+                              <option value="Completed">Completed</option>
+                            </select>
+                            <button
+                              onClick={() => handleStatusUpdate(order._id)}
+                              className="orderStatusButton"
+                            >
+                              Set
+                            </button>
+                          </>
+                        )}
+                    </>
+                  )}
                 </td>
               </tr>
             ))

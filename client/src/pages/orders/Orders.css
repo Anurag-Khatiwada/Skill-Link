@@ -63,6 +63,84 @@
     cursor: pointer;
     fill:rgb(72, 219, 13); 
 }
+.orderStatusButton{
+    margin-left: 4px;
+    background-color: #1dbf73; /* Fiverr green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.4rem 0.4rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+.blue{
+    color: rgb(23, 110, 217);
+}
+.yellow{
+    color: yellow;
+
+}
+.red{
+    color: red;
+
+}
+.green{
+    color: green;
+
+}
+.orderStatusSelect {
+    margin-left: 10px;
+    width: 200px; /* Adjust width as per your needs */
+    padding: 0.4rem;
+    font-size: 16px;
+    border: 2px solid #4CAF50; /* Teal/Green border for a modern look */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background for better readability */
+    color: #333; /* Darker text for contrast */
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  /* On hover */
+  .orderStatusSelect:hover {
+    border-color: #1E90FF; /* Blue border on hover */
+    background-color: #f1faff; /* Slightly tinted background */
+  }
+  
+  /* On focus (when dropdown is clicked) */
+  .orderStatusSelect:focus {
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.5); /* Subtle glow effect */
+    border-color: #1E90FF;
+  }
+  
+  /* Styling the options in the dropdown */
+  .orderStatusSelect option {
+    background-color: #ffffff; /* White background for the options */
+    color: #333; /* Dark text */
+    padding: 10px;
+  }
+  
+  /* Disabled option styling (if applicable) */
+  .orderStatusSelect option:disabled {
+    color: #aaa; /* Gray text for disabled options */
+    background-color: #f5f5f5; /* Slightly muted background */
+  }
+  .openSetStatus{
+    margin-left: 4px;
+    background-color: #1dbf73; /* Fiverr green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.4rem 0.4rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
 
 /* tr:nth-child(even){
     background-color: rgb(141, 216, 240);

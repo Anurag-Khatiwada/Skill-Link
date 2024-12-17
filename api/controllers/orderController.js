@@ -37,6 +37,7 @@ export const intent = async (req, res, next) => {
         freelancerId: service.userId,
         buyerId: req.userId,
         payment_intent: paymentIntent.id,
+        orderStatus: "Received"
     });
 
 
@@ -115,3 +116,24 @@ export const checkOrderCompletion = async (req, res, next)=>{
         next(err)
     }
 }
+export const orderStatusUpdate = async (req, res, next) => {
+    console.log(req.body);
+
+    try {
+        // Update the specific order by its ID and set the new status
+        const updatedOrder = await orderModel.findOneAndUpdate(
+            { _id: req.params.orderId },
+            { orderStatus: req.body.orderStatus }, // Use only the `orderStatus` field from the request body
+            { new: true } // Return the updated document
+        );
+
+        // If no order is found, return a 404 error
+        if (!updatedOrder) {
+            return res.status(404).send("Order not found");
+        }
+
+        res.status(200).send("Order status has been updated");
+    } catch (err) {
+        next(err); // Pass the error to the error-handling middleware
+    }
+};

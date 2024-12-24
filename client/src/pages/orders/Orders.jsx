@@ -70,7 +70,16 @@ const Orders = () => {
   };
   console.log(orderStatus);
   const handleStatusUpdate = async (orderId) => {
-    console.log(orderId);
+    if(orderStatus==="Cancelled"){
+      try {
+        const res = await newRequest.put(`/orders/cancelOrder/${orderId}`);
+        console.log(res);
+        alert(res.data.message);
+    } catch (err) {
+        console.error(err);
+        alert("Failed to cancel the order. Please try again.");
+    }
+    }
     const res = await newRequest.put(`/orders/updateOrder/${orderId}`, {
       orderStatus,
     });

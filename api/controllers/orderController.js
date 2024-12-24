@@ -137,3 +137,32 @@ export const orderStatusUpdate = async (req, res, next) => {
         next(err); // Pass the error to the error-handling middleware
     }
 };
+
+export const cancelOrder = async (req, res)=>{
+    const stripe = new Stripe(process.env.STRIPE);
+
+    try{
+        //find order by id
+        const order = await orderModel.findById(req.params.orderId);
+        if(!order){
+            return res.status(404).send( "Order not found");
+        }
+
+        //process the refund
+        const refund = await stripe.refunds.create({
+            payment_intent: order.payment_intent,
+        });
+        //update order status
+        order.orderStatus = "Cancelled";
+        order.refundId = refund.id;
+        await order.save();
+
+        res.status(200).send({
+            message: "Order has been cancelled and refunded",
+            refundId: refund.id,
+        });
+
+    }catch(err){
+        next(err)
+    }
+}

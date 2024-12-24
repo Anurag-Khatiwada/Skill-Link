@@ -33,6 +33,7 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    refundId: String,
     orderStatus: String,
     buyerUsername: String
         

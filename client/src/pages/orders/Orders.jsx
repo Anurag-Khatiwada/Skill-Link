@@ -149,10 +149,10 @@ const Orders = () => {
                   }
                 >
                   {order?.orderStatus}
-                  {currentUser.isFreelancer && (
+                   
                     <>
                       {!setStatus && order.orderStatus !== "Cancelled" &&
-                        order.orderStatus !== "Completed" && <button
+                        order.orderStatus !== "Completed" && order.orderStatus !== "Approved" && <button
                         onClick={handelSetStatus}
                         className="openSetStatus"
                       >
@@ -160,19 +160,29 @@ const Orders = () => {
                       </button>
                       }
                       {setStatus &&
+                      order.orderStatus !== "Completed" &&
                         order.orderStatus !== "Cancelled" &&
-                        order.orderStatus !== "Completed" && (
+                         (
                           <>
                             <select
                               className="orderStatusSelect"
                               value={orderStatus}
                               onChange={handleStatusChange}
                             >
+                              {
+                                currentUser.isFreelancer &&(
+                                  <>
                               <option value="Received">Received</option>
                               <option value="Accepted">Accepted</option>
                               <option value="On Progress">On Progress</option>
-                              <option value="Cancelled">Cancelled</option>
                               <option value="Completed">Completed</option>
+                              </>
+                            )}
+                              <option value="Cancelled">Cancelled</option>
+                              {
+                                !currentUser.isFreelancer && <option value="Approved">Approved</option>
+
+                              }
                             </select>
                             <button
                               onClick={() => handleStatusUpdate(order._id)}
@@ -183,7 +193,7 @@ const Orders = () => {
                           </>
                         )}
                     </>
-                  )}
+                  
                 </td>
               </tr>
             ))

@@ -5,11 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
+import PaymentOptions from "../../components/paymentOption/PaymentOption";
 
 const Gig = () => {
   const { id } = useParams();
   const [isloggedin, setIsloggedin] = useState(false)
   const [ordered, setOrdered] = useState(false)
+  const [showPaymentOptions, setShowPaymentOptions] = useState(false); // New state
+
   const navigate = useNavigate(); // Initialize useNavigate
   
   useEffect(()=>{
@@ -20,28 +23,38 @@ const Gig = () => {
   },[])
 
   // Function to handle navigation
-  const handlePaymentNavigation = async (id) => {
-      // Check if the user is logged in by checking localStorage directly
-      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-      if (!currentUser) {
-        // If not logged in, navigate to login
-        navigate(`/login`);
-      } else {
-        const res = await newRequest.get('/orders');
-        const orderExists = res?.data?.some((order) => order.serviceId === id); // Check if the service is already ordered
-    
-        if (orderExists) {
+const handlePaymentNavigation = async (id) => {
+  // Check if the user is logged in by checking localStorage directly
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (!currentUser) {
+    // If not logged in, navigate to login
+    navigate(`/login`);
+  } else {
+    try {
+      const res = await newRequest.get('/orders');
+      // Check if the service is already ordered and the status is not "cancelled" or "approved"
+      const order = res?.data?.find((order) => order.serviceId === id);
+
+      if (order) {
+        // Check the order status
+        if (["Cancelled", "Approved"].includes(order.orderStatus)) {
+          setShowPaymentOptions(true); // Allow purchasing the service again
+        } else {
           setOrdered(true);
-          // If service is already ordered, show message and redirect to orders page after 5 seconds
+          // Show message and redirect to orders page after 5 seconds
           setTimeout(() => {
-          navigate("/orders");
-        }, 5000);
-      }else{
-        // If logged in, navigate to payment page
-        navigate(`/pay/${id}`);
+            navigate("/orders");
+          }, 5000);
+        }
+      } else {
+        setShowPaymentOptions(true); // Show the PaymentOptions component for a new order
       }
+    } catch (error) {
+      console.error("Error fetching orders:", error);
     }
-  };
+  }
+};
+
   
   
   
@@ -90,11 +103,11 @@ const Gig = () => {
   return (  
     <>
     {
-      ordered ? (
-      <div>
-        You have already bought this service. Redericting to Orders page please wait
-      </div>
-    ):(
+     ordered ? (
+      <div>You have already bought this service. Redirecting to Orders page, please wait...</div>
+    ) : showPaymentOptions ? (
+      <PaymentOptions id={id} />
+    ) : (
     <div className="gig">
       {isLoading ? (
         "Loading..."
@@ -272,3 +285,5 @@ const Gig = () => {
 };
 
 export default Gig;
+
+

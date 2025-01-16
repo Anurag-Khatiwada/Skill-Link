@@ -15,6 +15,7 @@ import Register from "./pages/register/Register"
 import Pay from "./pages/pay/Pay"
 import Success from "./pages/success/Success"
 import Profile from "./pages/profile/Profile";
+import Chatbot from "./components/chatbot/Chatbot";
 
 
 import {
@@ -31,6 +32,7 @@ import {
 
 function App() {
 
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"))
   const queryClient = new QueryClient()
 
 
@@ -40,6 +42,9 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <Navbar />
           <Outlet />
+          {
+            currentUser && !currentUser.isFreelancer && <Chatbot />
+          }
           <Footer />
         </QueryClientProvider>
 

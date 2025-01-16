@@ -199,6 +199,8 @@ const Register = () => {
       });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       navigate("/");
+      window.location.reload();
+
     } catch (err) {
       console.log(err);
     }

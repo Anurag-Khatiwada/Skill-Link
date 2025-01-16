@@ -33,6 +33,10 @@ const Home = () => {
   //   console.log('Updated allServices:', allServices); // Log updated state for debugging
   // }, [allServices]);
 
+  // useEffect(() => {
+  //   window.location.reload();
+  // }, []);
+
   return (
     <div>
       <Featured />

@@ -34,6 +34,8 @@ const Navbar = () => {
       await newRequest.post("/auth/logout");
       localStorage.removeItem("currentUser"); // Properly remove the user
       navigate("/");
+      window.location.reload();
+
     } catch (err) {
       console.log(err);
     }

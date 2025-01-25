@@ -31,7 +31,6 @@ const orderSchema = new mongoose.Schema({
     },
     payment_intent:{
         type: String,
-        required: true
     },
     refundId: String,
     orderStatus: String,

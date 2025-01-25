@@ -16,6 +16,9 @@ import Pay from "./pages/pay/Pay"
 import Success from "./pages/success/Success"
 import Profile from "./pages/profile/Profile";
 import Chatbot from "./components/chatbot/Chatbot";
+import PaymentSuccess from "./pages/payment-success/PaymentSuccess"
+import PaymentFailure from "./pages/payment-failure/PaymentFailure"
+
 
 
 import {
@@ -107,7 +110,16 @@ function App() {
         {
           path: "/profile/:id",
           element: <Profile/>
-        }
+        },
+        {
+          path: "/payment-success",
+          element: <PaymentSuccess/>
+        },
+        {
+          path: "/payment-failure",
+          element: <PaymentFailure/>
+        },
+
       ]
     },
   ]);

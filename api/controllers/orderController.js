@@ -5,62 +5,23 @@ import userModel from "../models/userModel.js";
 import { Stripe } from "stripe";
 import crypto from "crypto";
 
-// export const intent = async (req, res, next) => {
-//   const stripe = new Stripe(process.env.STRIPE);
-
-//   console.log(req.body);
-
-//   const service = await serviceModel.findById(req.params.id);
-
-//   // Check if an order with this payment_intent already exists
-//   const existingOrder = await orderModel.findOne({
-//     payment_intent: req.body.payment_intent,
-//   });
-//   console.log(existingOrder);
-
-//   if (existingOrder) {
-//     return res.status(400).send({ message: "Order already exists" });
-//   }
-
-//   const paymentIntent = await stripe.paymentIntents.create({
-//     amount: service.price,
-//     currency: "usd",
-//     automatic_payment_methods: {
-//       enabled: true,
-//     },
-//   });
-
-//   const newOrder = new orderModel({
-//     serviceId: service._id,
-//     img: service.cover,
-//     title: service.title,
-//     price: service.price,
-//     freelancerId: service.userId,
-//     buyerId: req.userId,
-//     payment_intent: paymentIntent.id,
-//     orderStatus: "Received",
-//   });
-
-//   try {
-//     await newOrder.save();
-//     res.status(200).send({
-//       clientSecret: paymentIntent.client_secret,
-//     });
-//   } catch (err) {
-//     console.log(err);
-//     next(err); // Use next() to handle the error properly
-//   }
-// };
-
 export const intent = async (req, res, next) => {
-  const stripe = new Stripe(process.env.STRIPE);
+  const stripe = Stripe(process.env.STRIPE);
 
   try {
     const service = await serviceModel.findById(req.params.id);
-    if (!service) return res.status(404).json({ message: "Service not found" });
+
+    // Check if an order with this payment_intent already exists
+    const existingOrder = await orderModel.findOne({
+      payment_intent: req.body.payment_intent,
+    });
+
+    if (existingOrder) {
+      return res.status(400).send({ message: "Order already exists" });
+    }
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: service.price,
+      amount: service.price * 100, // Convert to cents
       currency: "usd",
       automatic_payment_methods: {
         enabled: true,
@@ -79,26 +40,129 @@ export const intent = async (req, res, next) => {
     });
 
     await newOrder.save();
-
     res.status(200).send({
       clientSecret: paymentIntent.client_secret,
     });
   } catch (err) {
     console.error(err);
-    res.status(500).send({ message: "Error creating payment intent", error: err.message });
+    next(err);
   }
 };
+// export const intent = async (req, res, next) => {
+//   const stripe = new Stripe(process.env.STRIPE);
+
+//   try {
+//     const service = await serviceModel.findById(req.params.id);
+//     if (!service) return res.status(404).json({ message: "Service not found" });
+
+//     const existingOrder = await orderModel.findOne({
+//       payment_intent: req.body.payment_intent,
+//     });
+
+//     if (existingOrder) {
+//       return res.status(400).json({ message: "Order already exists" });
+//     }
+
+//     const amountInCents = Math.round(service.price * 100); // Convert to cents
+
+//     const paymentIntent = await stripe.paymentIntents.create({
+//       amount: amountInCents,
+//       currency: "usd",
+//       automatic_payment_methods: { enabled: true },
+//     });
+
+//     const newOrder = new orderModel({
+//       serviceId: service._id,
+//       img: service.cover,
+//       title: service.title,
+//       price: service.price,
+//       freelancerId: service.userId,
+//       buyerId: req.userId,
+//       payment_intent: paymentIntent.id,
+//       orderStatus: "Received",
+//     });
+
+//     await newOrder.save();
+
+//     res.status(200).send({
+//       clientSecret: paymentIntent.client_secret,
+//     });
+//   } catch (err) {
+//     console.error("Stripe Payment Intent Error:", err);
+//     next(err); // Use next() to handle the error properly
+//     res.status(500).json({ message: "Internal Server Error", error: err.message });
+//   }
+// };
+
+// export const intent = async (req, res, next) => {
+//   const stripe = new Stripe(process.env.STRIPE);
+
+//   try {
+//     // Find the service and validate its existence
+//     const service = await serviceModel.findById(req.params.id);
+//     if (!service) {
+//       return res.status(404).json({ message: "Service not found" });
+//     }
+
+//     // Check if an order with this payment_intent already exists
+//     const existingOrder = await orderModel.findOne({
+//       payment_intent: req.body.payment_intent,
+//     });
+
+//     if (existingOrder) {
+//       return res.status(400).json({ message: "Order already exists" });
+//     }
+
+//     // Convert price to cents for Stripe
+//     const amountInCents = Math.round(service.price * 100);
+
+//     // Create a new payment intent
+//     const paymentIntent = await stripe.paymentIntents.create({
+//       amount: amountInCents,
+//       currency: "usd",
+//       automatic_payment_methods: { enabled: true },
+//     });
+
+//     // Create a new order
+//     const newOrder = new orderModel({
+//       serviceId: service._id,
+//       img: service.cover,
+//       title: service.title,
+//       price: service.price,
+//       freelancerId: service.userId,
+//       buyerId: req.userId,
+//       payment_intent: paymentIntent.id,
+//       orderStatus: "Received",
+//     });
+
+//     // Save the new order
+//     await newOrder.save();
+
+//     // Send the client secret back to the client
+//     res.status(200).json({
+//       clientSecret: paymentIntent.client_secret,
+//     });
+
+//   } catch (err) {
+//     console.error("Stripe Payment Intent Error:", err);
+    
+//     // Determine if it's a Stripe error or a general error
+//     if (err instanceof Stripe.errors.StripeError) {
+//       return res.status(400).json({ message: "Payment processing error", error: err.message });
+//     }
+
+//     // For other types of errors, pass to the error handling middleware
+//     next(err);
+//   }
+// };
 
 export const getOrders = async (req, res, next) => {
   try {
-    console.log(req.userId)
     const ordersQuery = req.isFreelancer
       ? { freelancerId: req.userId, isCompleted: true }
       : { buyerId: req.userId, isCompleted: true };
-      console.log(ordersQuery)
     const orders = await orderModel.find(ordersQuery);
 
-    console.log(orders)
 
     if (!orders) {
       return next(createError(404, "no orders found"));

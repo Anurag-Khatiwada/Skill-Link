@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
+import NotFound from '../../components/notFound/NotFound';
 
 const Success = () => {
   const { search } = useLocation();
@@ -26,8 +27,8 @@ const Success = () => {
 
   return (
     <div>
-      Payment successful. You are being redirected to the orders page. Please do
-      not close the page.
+      <NotFound isPaymentSuccess={true}/>
+
     </div>
   );
 };

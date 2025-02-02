@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import GigCards from '../../components/gigCards/GigCards';
 import newRequest from '../../utils/newRequest';
 import { Link, useLocation } from 'react-router-dom';
+import NotFound from '../../components/notFound/NotFound';
 
 const Gigs = () => {
   const [open, setOpen] = useState(false);
@@ -77,8 +78,13 @@ const Gigs = () => {
 
 
   // Loading and error states
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>No any services found</div>;
+  if (isLoading) return <NotFound isLoading={true} />;
+  if (error) return <div><NotFound 
+  message={{
+    main: "No services found", 
+    sub: "Oops! The service you are looking for doesn't exist."
+  }} 
+/></div>;
 
   return (
     <div className="gigs">

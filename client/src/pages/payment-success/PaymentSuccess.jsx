@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
+import NotFound from '../../components/notFound/NotFound';
 
 const PaymentSuccess = () => {
   const { search } = useLocation();
@@ -47,7 +48,7 @@ const PaymentSuccess = () => {
         error ? (
           <p>{error}</p>
         ) : (
-          <p>Payment successful. You are being redirected to the orders page. Please do not close the page.</p>
+          <NotFound isPaymentSuccess={true}/>
         )
       ) : (
         <p>Processing payment confirmation...</p>

@@ -6,6 +6,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
 import PaymentOptions from "../../components/paymentOption/PaymentOption";
+import NotFound from '../../components/notFound/NotFound';
 
 const Gig = () => {
   const { id } = useParams();
@@ -104,7 +105,7 @@ const handlePaymentNavigation = async (id) => {
     <>
     {
      ordered ? (
-      <div>You have already bought this service. Redirecting to Orders page, please wait...</div>
+      <NotFound isOrdered={true}/>
     ) : showPaymentOptions ? (
       <PaymentOptions id={id} />
     ) : (

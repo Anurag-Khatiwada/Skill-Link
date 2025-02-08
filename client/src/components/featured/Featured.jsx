@@ -42,7 +42,7 @@ const Featured = () => {
             <div className="left">
               <div className="title">
                 <h1>Are you looking for Freelancers?</h1>
-                <p>Hire Great Freelancers, Fast. SKill-Link helps you hire freelancers at a moment's notice</p>
+                <p>Hire Great Freelancers, Fast. Skill-Link helps you hire freelancers at a moment's notice</p>
               </div>
               <div className="search">
                 <div className="searchInput">

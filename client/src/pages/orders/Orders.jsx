@@ -151,7 +151,7 @@
 //                     {order?.orderStatus}
 
 //                     {!setStatus &&
-//                       order.orderStatus !== "Cancelled" &&                      
+//                       order.orderStatus !== "Cancelled" &&
 //                       order.orderStatus !== "Approved" && (
 //                         <button
 //                           onClick={handelSetStatus}
@@ -298,7 +298,11 @@ const Orders = () => {
     <div className="orders">
       <div className="orderscontainer">
         <div className="title">
-          {currentUser?.isFreelancer ? <h1>Orders Received:</h1> : <h1>Orders:</h1>}
+          {currentUser?.isFreelancer ? (
+            <h1>Orders Received:</h1>
+          ) : (
+            <h1>Orders:</h1>
+          )}
         </div>
         <table>
           <thead>
@@ -348,18 +352,41 @@ const Orders = () => {
                     {order?.orderStatus}
 
                     {/* If order is Completed, only Buyer can set Approved or Cancelled */}
-                    {order.orderStatus === "Completed" && !currentUser.isFreelancer && (
-                      <>
-                        <select className="orderStatusSelect" value={orderStatus || ""} onChange={handleStatusChange}>
-                          <option value="" disabled>Select a status</option>
-                          <option value="Approved">Approved</option>
-                          <option value="Cancelled">Cancelled</option>
-                        </select>
-                        <button onClick={() => handleStatusUpdate(order._id, orderStatus)} className="orderStatusButton">
-                          Set
-                        </button>
-                      </>
-                    )}
+                    {order.orderStatus !== "Approved" && order.orderStatus !== "Cancelled" &&
+                      !currentUser.isFreelancer && (
+                        <>
+                          {activeOrderId !== order._id ? (
+                            <button
+                              onClick={() => handleSetStatus(order._id)}
+                              className="openSetStatus"
+                            >
+                              Set Status
+                            </button>
+                          ) : (
+                            <>
+                              <select
+                                className="orderStatusSelect"
+                                value={orderStatus || ""}
+                                onChange={handleStatusChange}
+                              >
+                                <option value="" disabled>
+                                  Select a status
+                                </option>
+                                <option value="Approved">Approved</option>
+                                <option value="Cancelled">Cancelled</option>
+                              </select>
+                              <button
+                                onClick={() =>
+                                  handleStatusUpdate(order._id, orderStatus)
+                                }
+                                className="orderStatusButton"
+                              >
+                                Set
+                              </button>
+                            </>
+                          )}
+                        </>
+                      )}
 
                     {/* Freelancer can update status, but not if it's already Completed, Approved, or Cancelled */}
                     {order.orderStatus !== "Completed" &&
@@ -368,19 +395,34 @@ const Orders = () => {
                       currentUser.isFreelancer && (
                         <>
                           {activeOrderId !== order._id ? (
-                            <button onClick={() => handleSetStatus(order._id)} className="openSetStatus">
+                            <button
+                              onClick={() => handleSetStatus(order._id)}
+                              className="openSetStatus"
+                            >
                               Set Status
                             </button>
                           ) : (
                             <>
-                              <select className="orderStatusSelect" value={orderStatus || ""} onChange={handleStatusChange}>
-                                <option value="" disabled>Select a status</option>
+                              <select
+                                className="orderStatusSelect"
+                                value={orderStatus || ""}
+                                onChange={handleStatusChange}
+                              >
+                                <option value="" disabled>
+                                  Select a status
+                                </option>
                                 <option value="Received">Received</option>
                                 <option value="Accepted">Accepted</option>
                                 <option value="On Progress">On Progress</option>
                                 <option value="Completed">Completed</option>
+                                <option value="Cancelled">Cancelled</option>
                               </select>
-                              <button onClick={() => handleStatusUpdate(order._id, orderStatus)} className="orderStatusButton">
+                              <button
+                                onClick={() =>
+                                  handleStatusUpdate(order._id, orderStatus)
+                                }
+                                className="orderStatusButton"
+                              >
                                 Set
                               </button>
                             </>

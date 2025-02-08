@@ -50,6 +50,19 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: false,
     },
+    paymentMethod: {
+        type: String, 
+        required: false,
+    },
+    esewaId: {
+        type: String, 
+        required: false,
+    },
+    stripeAccountId: {
+        type: String, 
+        required: false,
+    },
+    
 
         
 },

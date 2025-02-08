@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 80%;
+    margin: auto;
     margin-top: 20px;
 }
 .gigs .gigsContainer{
@@ -18,7 +20,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap:40px;
-    margin:20px;
+    margin:30px;
 }
 .gigs .gigsContainer .breadcrumbs{
     font-weight: 300;

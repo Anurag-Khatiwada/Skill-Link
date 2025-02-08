@@ -3,7 +3,7 @@
     justify-content: center;
 }
 .gig .gigContainer{
-    width: 95vw;
+    width: 80vw;
     padding:30px 0px;
     display: flex;
     gap:50px;
@@ -71,7 +71,7 @@
     background-color: #484747;  /* Slightly lighter shade than the background */
     padding: 20px 20px;
     border-radius: 20px;
-    width:50vw
+    width:45vw
     
 }
 .seller .user{
@@ -80,8 +80,8 @@
     gap: 20px;
 }
 .seller .user img{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
 }

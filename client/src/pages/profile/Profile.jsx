@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import "./Profile.css";
 import newRequest from "../../utils/newRequest";
@@ -12,7 +10,11 @@ const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [modalImageSrc, setModalImageSrc] = useState(null); // State to hold the clicked image
 
-  const { isLoading, error, data: user } = useQuery({
+  const {
+    isLoading,
+    error,
+    data: user,
+  } = useQuery({
     queryKey: ["users", currentUser._id], // Include userId in the query key
     queryFn: async () => {
       const response = await newRequest.get(`/users/${currentUser._id}`);
@@ -55,9 +57,12 @@ const ProfilePage = () => {
 
   const deleteCertificate = async (index) => {
     try {
-      const res = await newRequest.put(`/users/${currentUser._id}/deleteCertificate`, {
-        certificateIndex: index,
-      });
+      const res = await newRequest.put(
+        `/users/${currentUser._id}/deleteCertificate`,
+        {
+          certificateIndex: index,
+        }
+      );
       alert(res.data);
       window.location.reload();
     } catch (err) {
@@ -74,7 +79,11 @@ const ProfilePage = () => {
     <div className="profile-page">
       <div className="profile-container">
         {isEditing ? (
-          <EditProfile user={user} onSave={handleSave} onCancle={handleCancel} />
+          <EditProfile
+            user={user}
+            onSave={handleSave}
+            onCancle={handleCancel}
+          />
         ) : (
           <>
             <div className="profile-header">
@@ -98,69 +107,108 @@ const ProfilePage = () => {
               <h3>About Me</h3>
               <p>{user?.desc || "No description provided."}</p>
             </div>
+            <hr className="separator"/>
+            
 
             {/* Skills Section */}
-            <div className="skills-section">
-              <h3>Skills</h3>
-              <ul>
-                {user?.skills && user.skills.length > 0 ? (
-                  user.skills.map((skill, index) => (
-                    <li key={index}>{skill}</li>
-                  ))
-                ) : (
-                  <li>No skills added.</li>
-                )}
-              </ul>
-            </div>
+            {currentUser.isFreelancer && (
+              <>
+                <div className="skills-section">
+                  <h3>Skills</h3>
+                  <ul>
+                    {user?.skills && user.skills.length > 0 ? (
+                      user.skills.map((skill, index) => (
+                        <li key={index}>{skill}</li>
+                      ))
+                    ) : (
+                      <li>No skills added.</li>
+                    )}
+                  </ul>
+                </div>
+                <hr className="separator"/>
 
-            {/* Certificates Section */}
-            <div className="certificates-section">
-              <h3>Certificates</h3>
-              <div className="certificationdisplay">
-                {user?.certificates && user.certificates.length > 0 ? (
-                  user.certificates.map((cert, index) => (
-                    <div className="certificateItem" key={index}>
+                <div className="payment-info-section">
+                  <h3>Payment Information</h3>
+                  {user?.paymentMethod ? (
+                    <div>
+                      <p>
+                        <strong>Preferred Method:</strong>{" "}
+                        {user.paymentMethod === "esewa" ? "eSewa" : "Stripe"}
+                      </p>
+                      {user.paymentMethod === "esewa" && (
+                        <p>
+                          <strong>eSewa ID:</strong>{" "}
+                          {user.esewaId || "Not Provided"}
+                        </p>
+                      )}
+                      {user.paymentMethod === "stripe" && (
+                        <p>
+                          <strong>Stripe Account ID:</strong>{" "}
+                          {user.stripeAccountId || "Not Provided"}
+                        </p>
+                      )}
+                    </div>
+                  ) : (
+                    <p>No payment information provided.</p>
+                  )}
+                </div>
+                <hr className="separator"/>
+
+                {/* Certificates Section */}
+                <div className="certificates-section">
+                  <h3>Certificates</h3>
+                  <div className="certificationdisplay">
+                    {user?.certificates && user.certificates.length > 0 ? (
+                      user.certificates.map((cert, index) => (
+                        <div className="certificateItem" key={index}>
+                          <img
+                            src={cert}
+                            alt="Certificate"
+                            className="certificateImg"
+                            onClick={() => handleImageClick(cert)} // Open image in modal on click
+                          />
+                          <button
+                            onClick={() => deleteCertificate(index)}
+                            className="deleteCertificate"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No certificates added.</p>
+                    )}
+                  </div>
+                </div>
+                <hr className="separator"/>
+
+
+                {/* CV Section */}
+                <div className="cv-section">
+                  <h3>CV</h3>
+                  {user?.cv ? (
+                    <div className="cvItem">
                       <img
-                        src={cert}
-                        alt="Certificate"
-                        className="certificateImg"
-                        onClick={() => handleImageClick(cert)} // Open image in modal on click
+                        className="cvImg"
+                        src={user?.cv}
+                        alt="CV"
+                        onClick={() => handleImageClick(user?.cv)} // Open CV in modal on click
                       />
-                      <button
-                        onClick={() => deleteCertificate(index)}
-                        className="deleteCertificate"
-                      >
+                      <button onClick={deleteCv} className="deleteCv">
                         Delete
                       </button>
                     </div>
-                  ))
-                ) : (
-                  <p>No certificates added.</p>
-                )}
-              </div>
-            </div>
-
-            {/* CV Section */}
-            <div className="cv-section">
-              <h3>CV</h3>
-              {user?.cv ? (
-                <div className="cvItem">
-                  <img
-                    className="cvImg"
-                    src={user?.cv}
-                    alt="CV"
-                    onClick={() => handleImageClick(user?.cv)} // Open CV in modal on click
-                  />
-                  <button onClick={deleteCv} className="deleteCv">
-                    Delete
-                  </button>
+                  ) : (
+                    <p>No CV uploaded.</p>
+                  )}
                 </div>
-              ) : (
-                <p>No CV uploaded.</p>
-              )}
-            </div>
+              </>
+            )}
 
-            <button onClick={() => setIsEditing(true)} className="edit-profile-btn">
+            <button
+              onClick={() => setIsEditing(true)}
+              className="edit-profile-btn"
+            >
               Edit Profile
             </button>
           </>
@@ -169,7 +217,10 @@ const ProfilePage = () => {
 
       {/* Render the ImageModal component when an image is clicked */}
       {modalImageSrc && (
-        <ImageModal src={modalImageSrc} onClose={() => setModalImageSrc(null)} />
+        <ImageModal
+          src={modalImageSrc}
+          onClose={() => setModalImageSrc(null)}
+        />
       )}
     </div>
   );

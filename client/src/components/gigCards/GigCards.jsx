@@ -40,6 +40,7 @@ const GigCards = ({ item }) => {
             </>
           )}
         </div>
+<div className="lowersection">
 
         <div className="star">
           <svg width="14" height="14" viewBox="0 0 24 24" className="star-svg">
@@ -47,13 +48,15 @@ const GigCards = ({ item }) => {
           </svg>
           <span>{!isNaN(item.totalStars/item.starNumber) && Math.round(item.totalStars/item.starNumber)}</span>
         </div>
-        <hr />
+
         <div className="details">
           <div className="price">
             <span>STARTING AT :</span>
             <h2>RS. {item.price}</h2>
           </div>
         </div>
+</div>
+        
       </div>
     </Link>
   );

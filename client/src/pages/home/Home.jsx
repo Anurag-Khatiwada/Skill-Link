@@ -7,6 +7,7 @@ import { projects } from "../../data";
 import CatCard from "../../components/catCard/CatCard";
 import ProjectCard from '../../components/projectCard/ProjectCard';
 import newRequest from "../../utils/newRequest.js";
+import HowItWorks from '../../components/howItWorks/HowItWorks.jsx';
 
 const Home = () => {
 
@@ -95,6 +96,7 @@ const Home = () => {
           <p>No services available at the moment.</p>
         )}
       </Slide>
+      <HowItWorks />
     </div>
   );
 };

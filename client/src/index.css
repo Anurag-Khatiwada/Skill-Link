@@ -2,8 +2,23 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-body {
-    background-color: #2c2c2c; 
-    color: #f7f7f7
 }
 
+/* body {
+    background-color: #2c2c2c; 
+    color: #f7f7f7
+} */
+/* :root {
+    --primary: #1dbf73;
+    --primary-dark: #19a463;
+    --secondary: #404145;
+    --text: #3f4043;
+    --text-light: #4e4f54;
+    --background: #ffffff;
+    --background-light: #fafafa;
+    --border: #e4e5e7;
+    --success: #1dbf73;
+    --error: #e63946;
+  } */
+  
+  

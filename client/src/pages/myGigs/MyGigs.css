@@ -3,15 +3,13 @@
     justify-content: center;
 }
 .myGigs .myGigscontainer{
-    width:95vw;
+    width:85vw;
     padding: 50px 0;
 }
 .myGigs .myGigscontainer .title{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #333;
-    border: 1px solid rgb(108, 107, 107);
     padding: 20px 20px;
     border-radius: 20px;
 
@@ -49,13 +47,9 @@
 .myGigs .myGigscontainer table,
 .myGigs .myGigscontainer table th,
 .myGigs .myGigscontainer table td {
-    border: 1px solid rgb(213, 218, 220);
+    border: 2px solid rgb(213, 218, 220);
     text-align: center;
 }
-.myGigs .myGigscontainer table th{
-    background-color: #333;
-}
-
 
 .myGigscontainer table tr{
     height: 50px;

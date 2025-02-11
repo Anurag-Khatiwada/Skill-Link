@@ -97,16 +97,7 @@ const Message = () => {
                   />
                 )}
 
-                {/* Display the message text */}
-                <p
-                  className={
-                    m.userId === currentUser._id
-                      ? "message-text myMessage"
-                      : "message-text"
-                  }
-                >
-                  {m.desc}
-                </p>
+
 
                 {/* If the message is from the current user, display the receiver's profile image */}
                 {m.userId === currentUser._id && (
@@ -116,16 +107,27 @@ const Message = () => {
                     className="profile-img"
                   />
                 )}
+                                {/* Display the message text */}
+                                <p
+                  className={
+                    m.userId === currentUser._id
+                      ? "message-text myMessage"
+                      : "message-text"
+                  }
+                >
+                  {m.desc}
+                </p>
               </div>
             ))}
           </div>
         )}
         <hr />
-        <form onSubmit={handleSubmit} className="write">
+
+      </div>
+      <form onSubmit={handleSubmit} className="write">
           <textarea placeholder="Write your message" id=""></textarea>
           <button type="submit">Send</button>
         </form>
-      </div>
     </div>
   );
 };

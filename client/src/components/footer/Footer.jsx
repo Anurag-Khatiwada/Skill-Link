@@ -2,7 +2,8 @@ import React from 'react'
 import "./Footer.css"
 const Footer = () => {
   return (
-  
+    <>
+    <hr className='gigsHr'/>
     <div className='footer'>
       <div className="footerContainer">
         <div className="item">
@@ -35,6 +36,8 @@ const Footer = () => {
       </div> 
       
     </div>
+    </>
+
   )
 }
 

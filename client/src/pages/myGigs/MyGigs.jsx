@@ -43,7 +43,7 @@ const MyGigs = () => {
     <div className="myGigs">
       {isLoading?"Loading...":error?(error.response && error.response.status ===404 ? "No service found ": "something went wrong"):<div className="myGigscontainer">
         <div className="title">
-          <h1>Services</h1>
+          <h1>Services :</h1>
           <Link to="/add">
             <button>Add New Service</button>
           </Link>

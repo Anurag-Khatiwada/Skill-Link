@@ -104,7 +104,7 @@ const ProfilePage = () => {
               </div>
             </div>
             <div className="profile-details">
-              <h3>About Me</h3>
+              <h3>About Me :</h3>
               <p>{user?.desc || "No description provided."}</p>
             </div>
             <hr className="separator"/>
@@ -114,7 +114,7 @@ const ProfilePage = () => {
             {currentUser.isFreelancer && (
               <>
                 <div className="skills-section">
-                  <h3>Skills</h3>
+                  <h3>Skills :</h3>
                   <ul>
                     {user?.skills && user.skills.length > 0 ? (
                       user.skills.map((skill, index) => (
@@ -128,7 +128,7 @@ const ProfilePage = () => {
                 <hr className="separator"/>
 
                 <div className="payment-info-section">
-                  <h3>Payment Information</h3>
+                  <h3>Payment Information :</h3>
                   {user?.paymentMethod ? (
                     <div>
                       <p>
@@ -156,7 +156,7 @@ const ProfilePage = () => {
 
                 {/* Certificates Section */}
                 <div className="certificates-section">
-                  <h3>Certificates</h3>
+                  <h3>Certificates :</h3>
                   <div className="certificationdisplay">
                     {user?.certificates && user.certificates.length > 0 ? (
                       user.certificates.map((cert, index) => (
@@ -185,7 +185,7 @@ const ProfilePage = () => {
 
                 {/* CV Section */}
                 <div className="cv-section">
-                  <h3>CV</h3>
+                  <h3>CV :</h3>
                   {user?.cv ? (
                     <div className="cvItem">
                       <img

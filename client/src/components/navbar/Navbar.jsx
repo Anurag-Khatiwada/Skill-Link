@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest.js";
@@ -9,6 +9,8 @@ const Navbar = () => {
   const { pathname } = useLocation();
 
   const navigate = useNavigate()
+  const userRef = useRef(null); // Reference to the user div
+
 
   // Get current user from local storage
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -22,11 +24,26 @@ const Navbar = () => {
       }
     };
 
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Close the dropdown if the click is outside the userRef element
+      if (userRef.current && !userRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("click", handleClickOutside);
+    return () => window.removeEventListener("click", handleClickOutside);
+  }, []);
+
+
 
 
   const handleLogout = async () => {
@@ -64,29 +81,32 @@ const Navbar = () => {
   return (
     <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
       <div className="container">
-        <div className="logo">
+        <div className={active || pathname !== "/" ? "logo_active" : "logo"}>
           <Link to="/" className="link">
             <span>SKILL-LINK</span>
+            {/* <img className="logoImg" src="../../public/img/SKILL-LINKS.png" alt="logo" /> */}
           </Link>
         </div>
         <div className="links">
           <Link to="/" className="link">
-            <span>Home</span>
+            <span className={active || pathname !== "/" ? "span_active" : "span"}>Home</span>
           </Link>
           {currentUser&&!currentUser?.isFreelancer && (
             <Link to="#" className="link">
-              <span onClick={BecomeFreelancer}>Become a Freelancer</span>
+              <span className={active || pathname !== "/" ? "span_active" : "span"} onClick={BecomeFreelancer}>Become a Freelancer</span>
             </Link>
           )}
           {currentUser ? (
             <div
-              onClick={() => {
-                setOpen(!open);
-              }}
-              className="user"
-            >
+            ref={userRef} // Reference for click detection
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent closing when clicking inside
+              setOpen((prev) => !prev);
+            }}
+            className="user"
+          >
               <img src={currentUser.img || "/img/noavatar.svg"} alt="" />
-              <span>{currentUser.username}</span>
+              <span className={active || pathname !== "/" ? "span_active" : "span"}>{currentUser.username}</span>
               {open && (
                 <div className="options">
                   {currentUser.isFreelancer && (
@@ -117,10 +137,10 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/login" className="link">
-                <span>Sign in</span>
+                <span className={active || pathname !== "/" ? "span_active" : "span"}>Sign in</span>
               </Link>
               <Link to="/register" className="link">
-                <button className="join">Join</button>
+                <button className={active || pathname !== "/" ? "join join_active" : "join"}>Join</button>
               </Link>
             </>
           )}
@@ -128,7 +148,7 @@ const Navbar = () => {
       </div>
       {(active || pathname !== "/") && (
         <>
-          <hr />
+          <hr className="navbarHr"/>
           <div className="menu">
             <Link
               to={`/gigs?cat=${encodeURIComponent("graphic & design")}`}

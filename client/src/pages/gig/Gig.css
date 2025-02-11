@@ -18,12 +18,13 @@
 .gigContainer .left .breadcrumbs{
     font-weight: 300;
     font-size: 0.7rem;
-    color: rgb(157, 157, 157);
+    color: rgb(0, 0, 0);
 }
 .gigContainer .left .user{
     display: flex;
     align-items: center;
     gap:10px;
+    color: black
 }
 .gigContainer .left .user .pp{
     width: 32px;
@@ -31,8 +32,13 @@
     border-radius: 50%;
 }
 .gigContainer .left .user span{
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     font-weight: 500;
+}
+.gigContainer .left h1{
+    font-size: 40px;
+    font-weight: 500;
+    color:rgb(0, 0, 0)
 }
 .stars{
     display: flex;
@@ -58,7 +64,7 @@
 }
 .gigContainer .left p{
     font-size: 0.9rem;
-    color: white;
+    color: rgb(19, 18, 18);
     line-height: 25px;
     
 }
@@ -68,7 +74,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #484747;  /* Slightly lighter shade than the background */
     padding: 20px 20px;
     border-radius: 20px;
     width:45vw
@@ -97,22 +102,23 @@
 .box {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    color: black;
+    font-size: 13px;
+    gap: 10px;
     border: 2px solid #3c3f41; /* Slightly darker border */
     border-radius: 15px;  /* Rounded corners */
-    padding: 20px 30px;
-    background: linear-gradient(145deg, #161515, #2e2d2d); /* Subtle gradient background */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    padding: 10px 14px;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
 }
 .box p{
-    font-size: 0.9rem;
+    font-size: 40px;
 }
 .box .items{
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     width: 100%;
+    
 }
 .box .items .item{
     display: flex;
@@ -131,8 +137,6 @@
     /* background-color: #101010; */
     padding: 20px 30px;
     border-radius: 20px ;
-    background: linear-gradient(145deg, #161515, #2e2d2d); /* Subtle gradient background */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
 }
 .reviews .item{
@@ -191,7 +195,10 @@
     margin-left: 5px;
     cursor: pointer;
 }
+.boxDesc{
+    color: black;
 
+}
 .gig .gigContainer .right{
     flex:1;
     border: 2px solid rgb(25, 26, 26);
@@ -204,8 +211,6 @@
     right:0px;
     top:150px;
     height: max-content;
-    background: linear-gradient(145deg, #161515, #2e2d2d); /* Subtle gradient background */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */}
 .gig .gigContainer .right .price{
     display: flex;
@@ -222,7 +227,7 @@
 }
 
 .gig .gigContainer .right p{
-    color: rgb(164, 163, 163);
+    color: rgb(112, 111, 111);
     margin: 10px 0;
 }
 
@@ -253,7 +258,7 @@
     align-items: center;
     gap:10px;
     font-weight: 300px;
-    color: rgb(173, 171, 171);
+    color: rgb(123, 121, 121);
 }
 .gigContainer .right .features .item img{
     width:14px;

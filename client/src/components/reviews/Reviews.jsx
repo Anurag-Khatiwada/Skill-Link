@@ -79,8 +79,8 @@ const Reviews = ({ gigId }) => {
   return (
     <>
       <div className="reviews">
-        <h2>Reviews</h2>
-        <hr />
+        <h2 >Reviews</h2>
+        <hr className="gigsHr" />
         {isLoading ? (
           "Loading..."
         ) : Array.isArray(data) && data.length > 0 ? (

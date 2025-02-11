@@ -7,8 +7,7 @@
 }
 
 .addContainer{
-    background-color: #e3e0e0; /* White background for the form card */
-    width:1400px;
+    width:1200px;
     padding:30px 20px;
     border-radius: 10px;
     position: relative;
@@ -112,7 +111,7 @@
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 1.8rem;
+    padding: 1rem;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -172,4 +171,15 @@
     display: flex;
     align-items: center;
     gap: 20px;
+}
+.imagesinput .imageAddss{
+    background-color: #242424; /* Fiverr green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
 }

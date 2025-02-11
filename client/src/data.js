@@ -173,12 +173,6 @@ export const cards = [
     desc: "Get expert help remotely",
     img: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
   },
-  {
-    id: 30,
-    title: "Project Management",
-    desc: "Manage projects effectively",
-    img: "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-  },
 ];
 
 

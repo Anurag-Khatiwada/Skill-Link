@@ -15,9 +15,11 @@
   }
   
   .payment-buttons {
+
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    height: 100%;
   }
   
   .payment-button {
@@ -34,8 +36,10 @@
   }
   
   .payment-button img {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: contain;
     margin-right: 0.5rem;
   }
   

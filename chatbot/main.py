@@ -28,7 +28,7 @@ def chat():
 
     def generate_response():
         try:
-            for chunk in llm(full_prompt, stop=["User:", "Assistant:"], stream=True, max_tokens=100):
+            for chunk in llm(full_prompt, stop=["User:", "Assistant:"], stream=True, max_tokens=500):
                 yield chunk['choices'][0]['text']
         except Exception as e:
             yield "Error generating response. Please try again."

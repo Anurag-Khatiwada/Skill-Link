@@ -1,17 +1,15 @@
+
 .featured {
     height: 60vh;
-    background-color: #3a3a3a;  /* Slightly lighter shade than the background */
+    background-color: #1e1e1e;  /* Slightly lighter shade than the background */
     color: #f7f7f7;  /* White text for contrast */
-    width: 80vw;
-    margin: auto;
-    border-radius: 30px;
+    width: 100%;
     display: flex;
-    margin-top: 20px;
     margin-bottom: -20px;
     justify-content: center;
 }
 .featureContainer {
-    width: 90%;
+    width: 80%;
     display: flex;
     align-items: center;
     margin-left: 40px;
@@ -157,9 +155,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-.link :hover {
-    color: #e63946;  /* Soft red for link hover */
-}
 
 /* Mobile adjustments */
 @media screen and (max-width: 1000px) {

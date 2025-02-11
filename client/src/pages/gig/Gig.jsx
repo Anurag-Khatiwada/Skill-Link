@@ -243,8 +243,8 @@ const handlePaymentNavigation = async (id) => {
                       <div className="desc">English</div>
                     </div>
                   </div>
-                  <hr />
-                  <p>{dataUser.desc}</p>
+                  <hr className="gigsHr"/>
+                  <p className="boxDesc">{dataUser.desc}</p>
                 </div>
               </div>
             )}

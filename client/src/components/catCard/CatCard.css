@@ -1,56 +1,62 @@
 .catCard {
-    width: 20vw;
-    height: 350px;
-    color: white;
-    border-radius: 10px;
+    width: 252px;
+    height: 344px;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    position: relative;
     cursor: pointer;
-    display: flex;
+    margin-top: 0px;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background: linear-gradient(145deg, #a7a6a6, #383737); /* Light gradient for a clean look */
-    text-decoration: none;
+    background-color: rgb(210, 210, 210); /* Light gradient for a clean look */
+    /* text-decoration: none;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
-    margin-bottom: 30px;
+    margin-bottom: 30px;  */
 }
 .catCard:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.cardImg {
-    width: 80%;
-    height: 60%;
+/* .catcardImg {
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid #e7dddd; /* Vibrant border for emphasis */
-}
+    border: 1px solid #e7dddd;
+} */
 
-.cardImg img {
+.catcardImg{
+    opacity: 0.8;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 .catCard .desc {
-    font-weight: 600;
-    margin-top: 20px;
-    color: #272626; /* Dark grey for readability */
+    font-weight: 700;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    
+    /* margin-top: 20px;
+    color: #272626; 
     font-size: 16px;
-    text-align: center;
+    text-align: center; */
 }
 
 .catCard .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 22px;
-    color: #161616; /* Dark text for emphasis */
-    margin-bottom: 10px;
-    text-transform: uppercase; /* Adds a modern touch */
+    position: absolute;
+    top: 45px;
+    left: 15px;
+
+    font-weight: 800;
+    font-size: 26px;
+   
 }
 
 @media screen and (max-width: 1000px) {

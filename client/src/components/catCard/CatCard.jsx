@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 const CatCard = ({ item }) => {
 
   return (
-    <Link to={`/gigs?cat=${item.title}`} className="catCard">
-      <div className="desc">{item.desc}</div>
-      <div className="cardImg"><img src={item.img} alt={item.title} /></div>
-      <div className="title">{item.title}</div>
+    <Link to={`/gigs?cat=${item.title}`} >
+    <div className='catCard'>
+      <img className='catcardImg' src={item.img} alt="" />
+      <span className="desc">{item.desc}</span>
+      <span className="title">{item.title}</span>
+  </div>
     </Link>
   );
 };

@@ -100,9 +100,9 @@ const Gigs = () => {
             <button onClick={apply}>Apply</button>
           </div>
           <div className="menueRight">
-            <span className="sortBy">Sort By</span>
+            <span className="sortBy">Sort By:</span>
             <span className="sortType">{sort === 'sales' ? 'Best Selling' : 'Newest'}</span>
-            <img src="./img/down.svg" alt="Sort menu" onClick={() => setOpen(!open)} />
+            <img  src="./img/down.svg" alt="Sort menu" onClick={() => setOpen(!open)} />
             {open && (
               <div className="rightMenue">
                 {sort === 'sales' ? (

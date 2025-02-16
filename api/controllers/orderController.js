@@ -6,6 +6,7 @@ import { Stripe } from "stripe";
 import crypto from "crypto";
 
 export const intent = async (req, res, next) => {
+  console.log(req.body);
   const stripe = Stripe(process.env.STRIPE);
 
   try {
@@ -15,13 +16,13 @@ export const intent = async (req, res, next) => {
     const existingOrder = await orderModel.findOne({
       payment_intent: req.body.payment_intent,
     });
-
-    if (existingOrder) {
-      return res.status(400).send({ message: "Order already exists" });
-    }
+    // console.log(existingOrder.orderStatus);
+    // if (existingOrder.orderStatus !== "Cancelled" || existingOrder.orderStatus !== "Approved") {
+    //   return res.status(400).send({ message: "Order already exists" });
+    // }
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: service.price * 100*0.0072, // Convert to cents
+      amount: service.price * 100, // Convert to cents
       currency: "usd",
       automatic_payment_methods: {
         enabled: true,

@@ -53,7 +53,7 @@ const MyGigs = () => {
             <th>Image</th>
             <th>Title</th>
             <th>Price</th>
-            <th>Sales</th>
+            {/* <th>Sales</th> */}
             <th>Action</th>
           </tr>
           {data?.map((gig) => (
@@ -66,7 +66,7 @@ const MyGigs = () => {
               </td>
               <td>{gig.title}</td>
               <td>Rs. {gig.price}</td>
-              <td>{gig.sales}</td>
+              {/* <td>{gig.sales}</td> */}
               <td>
                 <div onClick={()=>handleDelete(gig._id)}>
                   <svg

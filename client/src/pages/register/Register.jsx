@@ -282,7 +282,7 @@ const Register = () => {
           <textarea
             name="desc"
             cols="30"
-            rows="10"
+            rows="16"
             onChange={handleChange}
           ></textarea>
         </div>

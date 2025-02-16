@@ -82,7 +82,7 @@
 .seller .user{
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
 }
 .seller .user img{
     width: 80px;
@@ -227,7 +227,7 @@
 }
 
 .gig .gigContainer .right p{
-    color: rgb(112, 111, 111);
+    color: rgb(60, 60, 60);
     margin: 10px 0;
 }
 
@@ -258,7 +258,7 @@
     align-items: center;
     gap:10px;
     font-weight: 300px;
-    color: rgb(123, 121, 121);
+    color: rgb(67, 66, 66);
 }
 .gigContainer .right .features .item img{
     width:14px;

@@ -15,7 +15,7 @@ export const cards = [
     id: 3,
     title: "Logo Design",
     desc: "Build your brand identity",
-    img: "https://images.pexels.com/photos/442779/pexels-photo-442779.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "https://5.imimg.com/data5/SELLER/Default/2024/8/441862442/KE/VH/OL/39835229/logo-design-services-500x500.png",
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ export const cards = [
     id: 10,
     title: "Translation",
     desc: "Bridge language gaps",
-    img: "https://images.pexels.com/photos/159761/books-college-conceptual-reading-159761.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "https://stamps.org/portals/0/translation_1.jpg",
   },
   {
     id: 11,
@@ -93,7 +93,7 @@ export const cards = [
     id: 16,
     title: "Lifestyle",
     desc: "Enhance your way of life",
-    img: "https://images.pexels.com/photos/3656856/pexels-photo-3656856.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "https://images.stockcake.com/public/5/e/1/5e134447-6227-47be-a385-57d01fe686a2_medium/online-shopping-setup-stockcake.jpg",
   },
   {
     id: 17,
@@ -105,7 +105,7 @@ export const cards = [
     id: 18,
     title: "SEO",
     desc: "Boost your website ranking",
-    img: "https://images.pexels.com/photos/7110/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "https://www.webhopers.com/wp-content/uploads/2024/04/SEO-Freelancers.jpg",
   },
   {
     id: 19,
@@ -117,7 +117,7 @@ export const cards = [
     id: 20,
     title: "Photo Editing",
     desc: "Enhance your images",
-    img: "https://images.pexels.com/photos/40765/woman-face-eyes-view-40765.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "https://freelancegraphicdesignermalaysia.com/wp-content/uploads/2021/06/freelance-photo-editing-service-malaysia.png",
   },
   {
     id: 21,
@@ -147,13 +147,13 @@ export const cards = [
     id: 25,
     title: "Illustration",
     desc: "Bring ideas to life visually",
-    img: "https://images.pexels.com/photos/3778241/pexels-photo-3778241.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "https://static.vecteezy.com/system/resources/previews/020/598/556/non_2x/freelance-service-concept-male-entrepreneurs-with-magnifying-glass-looking-for-best-remote-employee-outline-design-style-minimal-illustration-for-landing-page-web-banner-hero-images-vector.jpg",
   },
   {
     id: 26,
     title: "3D Modeling",
     desc: "Create realistic 3D models",
-    img: "https://images.pexels.com/photos/6222/nature-sunny-red-flowers.jpg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
+    img: "https://it-s.com/wp-content/webp-express/webp-images/uploads/2020/12/blog-image.png-9.jpg.webp",
   },
   {
     id: 27,

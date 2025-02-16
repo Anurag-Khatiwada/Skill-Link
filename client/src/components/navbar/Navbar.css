@@ -1,9 +1,11 @@
-@font-face {
+/* @font-face {
     font-family: 'Gugi';
     src: url('../../fonts/Gugi-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-  }
+  } */
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+
 .navbar{
     display: flex;
     flex-direction: column;
@@ -37,17 +39,18 @@
 }
 
 .logo {
-    color: #eaecec;
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif /* Add this line */;
-  }
-.logo_active{
-    color:#000000;
-    font-size: 30px;
-    font-family:  Arial, Helvetica, sans-serif;
-
-
+    font-family: 'Gugi', sans-serif !important;
+    font-size: 30px !important;
+    color: #eaecec !important;
+    text-transform: uppercase; /* Optional: Makes text more stylish */
 }
+
+.logo_active {
+    font-family: 'Gugi', sans-serif !important;
+    font-size: 30px !important;
+    color: #000000 !important;
+}
+
 .links{
     display: flex;
     align-items: center;

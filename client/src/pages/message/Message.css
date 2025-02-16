@@ -92,7 +92,13 @@ hr{
     border-radius: 8px;
     cursor: pointer;
 }
-
+.messageHr{
+    height: 0;
+    border:0.5px solid rgb(145, 145, 145);
+    margin-bottom: 1rem;
+    margin-left: 20rem;
+    width:65%;
+}
 @media screen and (max-width:1000px) {
     .messageContainer{
         width: 90vw;

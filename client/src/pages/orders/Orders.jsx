@@ -307,7 +307,7 @@ const Orders = () => {
         <table>
           <thead>
             <tr>
-              {currentUser.isFreelancer && <th>Buyer</th>}
+              {currentUser.isFreelancer && <th>Recruiter</th>}
               <th>Image</th>
               <th>Title</th>
               <th>Price</th>

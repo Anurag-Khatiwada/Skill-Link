@@ -121,9 +121,10 @@ const Message = () => {
             ))}
           </div>
         )}
-        <hr />
+        
 
       </div>
+      <hr className="messageHr"/>
       <form onSubmit={handleSubmit} className="write">
           <textarea placeholder="Write your message" id=""></textarea>
           <button type="submit">Send</button>

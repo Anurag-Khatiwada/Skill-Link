@@ -3,12 +3,11 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #2c2c2c; /* Fiverr-like light gray background */
   }
   
   .login form {
     width: 400px;
-    background-color: #e3e0e0; /* White background for the form card */
+    background-color: rgb(163, 163, 163);
     border-radius: 10px;
     padding: 2rem;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -18,19 +17,19 @@
   }
   
   .login form h1 {
-    color: #404145; /* Neutral Fiverr text color */
+    color: #000000; /* Neutral Fiverr text color */
     text-align: center;
     font-size: 1.8rem;
   }
   .login form h5 {
-    color: #6e6f70; /* Neutral Fiverr text color */
+    color: #3e3f3f; /* Neutral Fiverr text color */
     text-align: center;
     font-size: 0.8rem;
     margin-bottom: 1rem;
   }
   
   .login form label {
-    color: #404145;
+    color: #000000;
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }
@@ -105,7 +104,7 @@
   }
   
   .login form .create-account a {
-    color: #1dbf73; /* Fiverr green for links */
+    color: #293b32; /* Fiverr green for links */
     text-decoration: none;
     font-weight: bold;
   }

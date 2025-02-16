@@ -83,7 +83,7 @@ const Navbar = () => {
       <div className="container">
         <div className={active || pathname !== "/" ? "logo_active" : "logo"}>
           <Link to="/" className="link">
-            <span>SKILL-LINK</span>
+            <span>SKILL-LINKS</span>
             {/* <img className="logoImg" src="../../public/img/SKILL-LINKS.png" alt="logo" /> */}
           </Link>
         </div>
@@ -151,10 +151,10 @@ const Navbar = () => {
           <hr className="navbarHr"/>
           <div className="menu">
             <Link
-              to={`/gigs?cat=${encodeURIComponent("graphic & design")}`}
+              to={`/gigs?cat=${encodeURIComponent("Graphic Design")}`}
               className="link"
             >
-              Graphic & Design
+              Graphic Design
             </Link>
             <Link
               to={`/gigs?cat=${encodeURIComponent("Video & Animation")}`}
